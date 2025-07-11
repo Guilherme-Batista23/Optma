@@ -1,4 +1,14 @@
-// Scroll suave
+// ==================== SESSION ID (memória por usuário) ====================
+function getSessionId() {
+  let sessionId = localStorage.getItem('sessionId');
+  if (!sessionId) {
+    sessionId = crypto.randomUUID(); // Gera um ID único
+    localStorage.setItem('sessionId', sessionId);
+  }
+  return sessionId;
+}
+
+// ==================== SCROLL SUAVE PARA ÂNCORAS ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -9,7 +19,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Chat
+// ==================== CHAT COM IA ====================
 const chat = document.getElementById('chat');
 const input = document.getElementById('chat-message');
 const sendBtn = document.getElementById('send-btn');
@@ -33,7 +43,10 @@ input.addEventListener('keypress', function (e) {
 
 function sendMessage() {
   const message = input.value.trim();
-  if (!message) return;
+  if (!message) {
+    alert("Por favor, digite uma mensagem.");
+    return;
+  }
 
   addMessage(message, 'user');
   input.value = '';
@@ -45,26 +58,29 @@ function sendMessage() {
   chat.appendChild(typingMsg);
   chat.scrollTop = chat.scrollHeight;
 
- fetch("https://n8n.srv880765.hstgr.cloud/webhook/landing-page", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ chatInput: message })
-})
-.then(res => res.json())
-.then(data => {
-  console.log("Resposta do N8N:", data);
-  typingMsg.remove();
- addMessage(data.output || data.message || "Desculpe, não consegui entender.", 'bot');
-})
-.catch(err => {
-  typingMsg.remove();
-  console.error(err);
-  addMessage("Ocorreu um erro ao tentar responder. Tente novamente mais tarde.", 'bot');
-});
+  const sessionId = getSessionId();
 
+  fetch("https://n8n.srv880765.hstgr.cloud/webhook/landing-page", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chatInput: message,
+      sessionId: sessionId
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      typingMsg.remove();
+      addMessage(data.output || data.message || "Desculpe, não consegui entender.", 'bot');
+    })
+    .catch(err => {
+      typingMsg.remove();
+      console.error(err);
+      addMessage("Ocorreu um erro ao tentar responder. Tente novamente mais tarde.", 'bot');
+    });
 }
 
-// Enviar formulário
+// ==================== FORMULÁRIO DE LEAD ====================
 document.getElementById('lead-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -72,39 +88,32 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
   const email = document.getElementById('email').value;
   const numero = document.getElementById('numero').value;
 
-  // Abre nova aba ANTES de qualquer código assíncrono
   const win = window.open("https://mpago.la/2TSij5j", "_blank");
 
-  // Previne bloqueios
   if (!win) {
     alert("Por favor, permita pop-ups para continuar com o pagamento.");
     return;
   }
 
-  // Agora executa o resto (envio ao N8N, chat etc.)
   fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ nome, email, mensagem: numero })
   })
-  .then(() => {
-    alert(`Obrigado, ${nome}! Enviamos seus dados com sucesso.`);
-
-    // Scroll até o chat
-    document.getElementById("ia").scrollIntoView({ behavior: 'smooth' });
-
-    // (opcional) Mensagem da IA
-    setTimeout(() => {
-      addMessage(`Olá ${nome}! Que bom ter você aqui. Qual sua principal dúvida sobre emagrecimento?`, 'bot');
-    }, 500);
-  })
-  .catch((error) => {
-    alert('Erro ao enviar seus dados. Tente novamente mais tarde.');
-    console.error(error);
-  });
+    .then(() => {
+      alert(`Obrigado, ${nome}! Enviamos seus dados com sucesso.`);
+      document.getElementById("ia").scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        addMessage(`Olá ${nome}! Que bom ter você aqui. Qual sua principal dúvida sobre emagrecimento?`, 'bot');
+      }, 500);
+    })
+    .catch((error) => {
+      alert('Erro ao enviar seus dados. Tente novamente mais tarde.');
+      console.error(error);
+    });
 });
 
-// Efeito visual do cursor
+// ==================== CURSOR PERSONALIZADO ====================
 document.addEventListener('mousemove', (e) => {
   let cursor = document.querySelector('.cursor');
   if (!cursor) {
