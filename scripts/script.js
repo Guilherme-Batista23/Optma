@@ -88,7 +88,7 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
   const email = document.getElementById('email').value;
   const numero = document.getElementById('numero').value;
 
-  const win = window.open("https://mpago.la/2TSij5j", "_blank");
+  const win = window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
 
   if (!win) {
     alert("Por favor, permita pop-ups para continuar com o pagamento.");
