@@ -15,7 +15,6 @@
       <ul class="nav-links">
         <li><a href="#beneficios">Benefícios</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#ia">Fale Com Fritzinha IA</a></li>
       </ul>
       <a href="#formulario" class="cta-button">Começar Agora</a>
     </nav>
@@ -40,8 +39,15 @@
           <div class="input-group">
             <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required />
           </div>
-         <div class="input-group">
-  <input type="tel" id="numero" name="numero" placeholder="Seu Celular" pattern="\d{10,11}" title="Digite um número válido com 10 a 11 dígitos, somente números." required />
+        <div class="input-group">
+  <input
+    type="tel"
+    id="numero"
+    name="numero"
+    placeholder="(DDD) 99999-9999"
+    required
+    maxlength="15"
+  />
 </div>
 <button type="submit" class="cta-button" id="btn-unico">Garanta Sua Vaga!!!</button>
           </div>
@@ -96,23 +102,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Chat Section -->
-  <section class="chat-section" id="ia">
-    <h2>Converse com Nossa IA Agora</h2>
-    <div class="chat-container">
-      <div class="chat-header">
-        <div class="chat-status"></div>
-        Fale Com Fritz!
-      </div>
-      <div id="chat"></div>
-      <div class="chat-input">
-        <input type="text" id="chat-message" placeholder="Digite sua pergunta sobre emagrecimento..." />
-        <button id="send-btn">Enviar</button>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Fritzinha — Todos os direitos reservados. Transforme seu corpo com inteligência artificial.</p>

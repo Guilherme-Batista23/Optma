@@ -1,8 +1,8 @@
-// ==================== SESSION ID (memória por usuário) ====================
+// ==================== SESSION ID ====================
 function getSessionId() {
   let sessionId = localStorage.getItem('sessionId');
   if (!sessionId) {
-    sessionId = crypto.randomUUID(); // Gera um ID único
+    sessionId = crypto.randomUUID();
     localStorage.setItem('sessionId', sessionId);
   }
   return sessionId;
@@ -19,98 +19,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ==================== CHAT COM IA ====================
-const chat = document.getElementById('chat');
-const input = document.getElementById('chat-message');
-const sendBtn = document.getElementById('send-btn');
-
-function addMessage(text, sender) {
-  const p = document.createElement('p');
-  p.textContent = text;
-  p.className = sender;
-  chat.appendChild(p);
-  chat.scrollTop = chat.scrollHeight;
-}
-
-setTimeout(() => {
-  addMessage('Olá! Sou sua assistente de emagrecimento com IA. Como posso ajudar você hoje?', 'bot');
-}, 1000);
-
-sendBtn.addEventListener('click', sendMessage);
-input.addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') sendMessage();
-});
-
-function sendMessage() {
-  const message = input.value.trim();
-  if (!message) {
-    alert("Por favor, digite uma mensagem.");
-    return;
-  }
-
-  addMessage(message, 'user');
-  input.value = '';
-
-  const typingMsg = document.createElement('p');
-  typingMsg.textContent = 'IA está digitando...';
-  typingMsg.className = 'bot';
-  typingMsg.style.opacity = '0.6';
-  chat.appendChild(typingMsg);
-  chat.scrollTop = chat.scrollHeight;
-
-  const sessionId = getSessionId();
-
-  fetch("https://n8n.srv880765.hstgr.cloud/webhook/landing-page", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chatInput: message,
-      sessionId: sessionId
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      typingMsg.remove();
-      addMessage(data.output || data.message || "Desculpe, não consegui entender.", 'bot');
-    })
-    .catch(err => {
-      typingMsg.remove();
-      console.error(err);
-      addMessage("Ocorreu um erro ao tentar responder. Tente novamente mais tarde.", 'bot');
-    });
-}
-
 // ==================== FORMULÁRIO DE LEAD ====================
-document.getElementById('lead-form').addEventListener('submit', function (e) {
+document.getElementById("lead-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const nome = document.getElementById('nome').value;
-  const email = document.getElementById('email').value;
-  const numero = document.getElementById('numero').value;
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const telefoneInput = document.getElementById("numero");
+  const numeroRaw = telefoneInput.value.replace(/\D/g, "");
 
-  const win = window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
-
-  if (!win) {
-    alert("Por favor, permita pop-ups para continuar com o pagamento.");
+  if (numeroRaw.length !== 11) {
+    alert("Por favor, digite um número válido com DDD e 9 dígitos. Ex: (11) 91234-5678");
+    telefoneInput.focus();
     return;
   }
+
+  const numeroFormatado = `+55${numeroRaw}`;
 
   fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ nome, email, mensagem: numero })
+    body: JSON.stringify({ nome, email, mensagem: numeroFormatado })
   })
-    .then(() => {
-      alert(`Obrigado, ${nome}! Enviamos seus dados com sucesso.`);
-      document.getElementById("ia").scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        addMessage(`Olá ${nome}! Que bom ter você aqui. Qual sua principal dúvida sobre emagrecimento?`, 'bot');
-      }, 500);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao enviar para o servidor. Status: " + response.status);
+      }
+
+      window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
+
+ alert(`Olá ${nome}! Agora você será redirecionado para o pagamento.`);
+
+      document.getElementById("ia")?.scrollIntoView({ behavior: 'smooth' });
+
     })
     .catch((error) => {
-      alert('Erro ao enviar seus dados. Tente novamente mais tarde.');
+      alert("Erro ao enviar seus dados. Tente novamente.");
       console.error(error);
     });
+});
+
+// ==================== FORMATAR TELEFONE AO DIGITAR ====================
+const telefoneInput = document.getElementById("numero");
+
+telefoneInput.addEventListener("input", () => {
+  let valor = telefoneInput.value.replace(/\D/g, "").slice(0, 11);
+
+  if (valor.length >= 2 && valor.length <= 6) {
+    telefoneInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
+  } else if (valor.length > 6) {
+    telefoneInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7, 11)}`;
+  } else {
+    telefoneInput.value = valor;
+  }
 });
 
 // ==================== CURSOR PERSONALIZADO ====================
