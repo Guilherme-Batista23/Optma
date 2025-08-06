@@ -865,6 +865,13 @@ body::after {
     transform: translate(0);
 }
 
+.hero-flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
 /* Responsividade: imagem abaixo no mobile */
 @media (max-width: 768px) {
   .profile-image {
@@ -913,6 +920,19 @@ body::after {
   .hero img {
     max-width: 100%;
     height: auto;
+  }
+
+    .hero-flex-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: 2;
+  }
+
+  .hero-text {
+    order: 1;
   }
 
 
