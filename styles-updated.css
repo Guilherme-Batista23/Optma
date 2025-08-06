@@ -873,10 +873,11 @@ body::after {
     margin: 0 auto;
   }
 
-    h1 {
+   h1 {
     font-size: 2rem;
     line-height: 2.5rem;
     text-align: left;
+    word-break: break-word;
   }
 
   h2 {
@@ -908,13 +909,14 @@ body::after {
   }
 
 
- .hero-image img {
-  width: 280px; /* ou 240px se quiser menor */
-  height: auto;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+   .hero-image img {
+    display: block;
+    margin: 24px auto 0 auto;
+    max-width: 180px;
+    position: relative;
+    right: 0;
+    top: 0;
+  }
 
 
   .hero-text p {
