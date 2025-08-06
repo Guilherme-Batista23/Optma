@@ -873,6 +873,13 @@ body::after {
     margin: 0 auto;
   }
 
+    .hero-text h1 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    text-align: center;
+    padding: 0 16px;
+  }
+
    h1 {
     font-size: 2rem;
     line-height: 2.5rem;
@@ -1005,4 +1012,20 @@ body::after {
   font-family: "League Spartan", sans-serif;
   color: #43b7c9;
   font-weight: 700;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
