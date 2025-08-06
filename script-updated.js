@@ -176,8 +176,8 @@ function handleFormSubmit(e) {
     })
     .then((response) => {
         if (!response.ok) throw new Error("Erro ao enviar para o servidor.");
-        alert(`Olá ${name}! Agora você será redirecionado para o pagamento.`);
         window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
+         alert(`Olá ${name}! Agora você será redirecionado para o pagamento.`);
     })
     .catch((error) => {
         alert("Erro ao enviar seus dados. Tente novamente.");

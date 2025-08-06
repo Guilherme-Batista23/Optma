@@ -5,11 +5,25 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    color: #ffffff;
-    background-color: #0f0f0f; /* fundo preto sólido */
-    overflow-x: hidden;
+    font-family: 'League Spartan', sans-serif;
+  position: relative;
+  background: url('BackgroundFernanda.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000; /* fallback */
+  color: #fff;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+/* Camada escura por cima do body (igual a .hero::before) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .container {
@@ -77,38 +91,27 @@ body {
     justify-content: center;
     padding: 120px 0 60px;
     position: relative;
-    background: url('BackgroundFernanda.jpg') no-repeat center center;
-    background-size: cover;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6); /* escuridão sobre a imagem */
-    z-index: 0;
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 60px;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 
 
 .hero-text h1 {
-    font-family: 'League Spartan', sans-serif; /* Fonte do título */
+    font-family: 'League Spartan', sans-serif;
     font-size: 3rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #fff; /* cor padrão do h1 */
 }
+
 
 .hero-text p {
     font-size: 1.1rem;
@@ -146,11 +149,13 @@ body {
     font-size: 20px;
 }
 
-.hero-image {
-    display: flex;
-    justify-content: center;
+.hero-image img {
+  width: 280px; /* ou 240px se quiser menor */
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
 .profile-image {
   width: 300px;
     height: 300px;
@@ -860,20 +865,23 @@ body {
     transform: translate(0);
 }
 
-/* Responsive */
+/* Responsividade: imagem abaixo no mobile */
 @media (max-width: 768px) {
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    text-align: center;
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
   }
 
-  .hero-text h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.4 !important;
-  }
+
+ .hero-image img {
+  width: 280px; /* ou 240px se quiser menor */
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 
   .hero-text p {
     font-size: 1rem !important;
@@ -881,11 +889,10 @@ body {
   }
 
   .profile-image {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     margin: 0 auto;
   }
-}
     
     .urgency-content {
         padding: 0 10px;
@@ -927,13 +934,39 @@ body {
         flex-direction: column;
         text-align: center;
     }
-
+}
 
 
 .highlight-blue {
-  background: linear-gradient(135deg, #43b7c9 0%, #6ad4e6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #43b7c9 !important;
+  font-weight: 700;
+}
+
+
+.section,
+.feature-box {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* mesma opacidade da .hero::before */
+  z-index: -1;
+}
+
+
+.hero-text h1 .highlight-blue {
+  all: unset; /* limpa o background-clip herdado do h1 */
+  font-family: "League Spartan", sans-serif;
+  color: #43b7c9;
   font-weight: 700;
 }
