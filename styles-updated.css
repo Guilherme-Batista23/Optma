@@ -873,6 +873,40 @@ body::after {
     margin: 0 auto;
   }
 
+    h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    text-align: left;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p, span, li {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+
+  .hero {
+    padding: 80px 20px;
+    text-align: left;
+  }
+
+  .card {
+    margin: 20px 0;
+    padding: 20px;
+  }
+
+  .highlight {
+    font-size: 1rem;
+  }
+
+  .hero img {
+    max-width: 100%;
+    height: auto;
+  }
+
 
  .hero-image img {
   width: 280px; /* ou 240px se quiser menor */
@@ -935,7 +969,7 @@ body::after {
         text-align: center;
     }
 }
-
+/*Media acaba aqui*/
 
 .highlight-blue {
   color: #43b7c9 !important;
