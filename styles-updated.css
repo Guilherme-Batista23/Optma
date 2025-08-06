@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; /* Fonte principal */
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-color: #0f0f0f; /* fundo preto sólido */
     overflow-x: hidden;
 }
 
@@ -77,19 +77,26 @@ body {
     justify-content: center;
     padding: 120px 0 60px;
     position: relative;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(67, 183, 201, 0.3) 0%, transparent 50%), /* Cor da identidade visual */
-        radial-gradient(circle at 80% 20%, rgba(106, 212, 230, 0.3) 0%, transparent 50%), /* Cor da identidade visual */
-        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: url('BackgroundFernanda.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* escuridão sobre a imagem */
+    z-index: 0;
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
 }
+
+
 
 .hero-text h1 {
     font-family: 'League Spartan', sans-serif; /* Fonte do título */
@@ -855,26 +862,30 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-    }
-    
-.hero-text h1 {
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
     font-size: 1.6rem !important;
     line-height: 1.4 !important;
+  }
+
+  .hero-text p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .profile-image {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+  }
 }
-    
-    .profile-image {
-        width: 300px;
-        height: 300px;
-    }
     
     .urgency-content {
         padding: 0 10px;
@@ -916,7 +927,7 @@ body {
         flex-direction: column;
         text-align: center;
     }
-}
+
 
 
 .highlight-blue {
