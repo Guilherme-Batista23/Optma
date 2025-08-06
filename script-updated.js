@@ -304,22 +304,23 @@ function initializeSmoothScroll() {
 
 // Efeito parallax no hero
 function initializeParallax() {
-    const hero = document.querySelector('.hero');
-    const profileImage = document.querySelector('.profile-image');
-    
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        
-        if (profileImage) {
-            profileImage.style.transform = `translateY(${rate}px)`;
-        }
-        
-        // Efeito no background do hero
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-    });
+    if (window.innerWidth > 768) {
+        const hero = document.querySelector('.hero');
+        const profileImage = document.querySelector('.profile-image');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+
+            if (profileImage) {
+                profileImage.style.transform = `translateY(${rate}px)`;
+            }
+
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    }
 }
 
 // Efeito de partículas no background
