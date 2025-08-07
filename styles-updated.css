@@ -1305,10 +1305,18 @@ img {
     overflow: visible; /* deixa a imagem ultrapassar */
 }
 
-/* Ajuste para o parágrafo específico no mobile */
-@media (max-width: 768px) {
-    .hero-text p.subtitulo-principal {
-        font-size: 0.9rem; /* Tamanho da fonte ajustado para mobile */
-        line-height: 1.4;  /* Espaçamento entre linhas ajustado */
+/* AJUSTE FORÇADO PARA O SUBTÍTULO NO MOBILE */
+@media (max-width: 480px) {
+    .hero-text p {
+        font-size: 0.85rem !important; /* Reduzindo ainda mais e forçando a aplicação */
+        line-height: 1.4 !important;   /* Ajustando a altura da linha */
+    }
+}
+
+/* Ajuste para tablets (opcional, mas recomendado) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .hero-text p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
     }
 }
