@@ -1304,3 +1304,11 @@ img {
     padding: 15px 0;
     overflow: visible; /* deixa a imagem ultrapassar */
 }
+
+/* Ajuste para o parágrafo específico no mobile */
+@media (max-width: 768px) {
+    .hero-text p.subtitulo-principal {
+        font-size: 0.9rem; /* Tamanho da fonte ajustado para mobile */
+        line-height: 1.4;  /* Espaçamento entre linhas ajustado */
+    }
+}
