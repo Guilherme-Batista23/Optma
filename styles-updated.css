@@ -60,6 +60,7 @@ body::after {
     font-weight: 600;
     font-size: 18px;
     flex-shrink: 0;
+    
 }
 
 .logo-icon {
@@ -831,15 +832,19 @@ body::after {
 /* Media queries mais abrangentes para diferentes tamanhos de tela */
 @media (max-width: 480px) {
     /* Header mobile - melhorias específicas */
-    .header {
-        padding: 10px 0;
-    }
+   .header {
+    height: 70px; /* ajuste conforme o tamanho final do logo */
+    padding: 0 20px; /* horizontal apenas */
+    display: flex;
+    align-items: center;
+}
     
-    .header-content {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
+.header-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
     
     .logo {
         font-size: 16px;
@@ -1197,4 +1202,54 @@ img {
     color: #43b7c9; /* Cor da identidade visual */
 }
 
+
+
+
+.highlight-image {
+    width: 100px; /* Ajuste conforme necessário */
+    height: auto;
+    margin-right: 16px; /* Espaçamento à direita do texto */
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .solution-highlight {
+        flex-direction: column;
+    }
+    .highlight-image {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+.header-logo {
+    height: 180px; /* pode ajustar para 70px, 80px... conforme a estética */
+    width: auto;
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        height: 25px;
+    }
+}
+
+
+
+.highlight-image {
+    width: 150px; /* Aumentando o tamanho do logo */
+    height: auto;
+    margin-right: 16px;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .highlight-image {
+        width: 100px; /* Tamanho menor para mobile */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
 
