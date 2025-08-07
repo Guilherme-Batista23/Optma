@@ -1477,12 +1477,12 @@ img {
     }
 
     body::after {
-        content: '';
-        position: fixed;
-        inset: 0;
-        backdrop-filter: blur(4px);
-        background: rgba(0, 0, 0, 0.4); /* camada sutil escura com transparência */
-        z-index: -1;
-        pointer-events: none;
-    }
+    content: '';
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(4px); /* efeito moderno */
+    background: rgba(0, 0, 0, 0.3); /* camada escura leve */
+    z-index: -1;
+    pointer-events: none;
+  }
 }
