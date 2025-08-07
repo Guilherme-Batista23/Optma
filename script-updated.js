@@ -12,6 +12,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+// Detectar se é dispositivo móvel
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           window.innerWidth <= 768;
+}
 
 // Observar todos os elementos com classes de animação
 document.addEventListener('DOMContentLoaded', () => {
@@ -143,7 +148,25 @@ function clearFieldError(input) {
     input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
 }
 
-// Handle form submission
+// Mostrar loading no botão
+function showButtonLoading(button) {
+    const originalText = button.innerHTML;
+    button.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            Processando...
+        </div>
+    `;
+    button.disabled = true;
+    return originalText;
+}
+
+function hideButtonLoading(button, originalText) {
+    button.innerHTML = originalText;
+    button.disabled = false;
+}
+
+// Handle form submission - VERSÃO CORRIGIDA PARA MOBILE
 function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -169,6 +192,11 @@ function handleFormSubmit(e) {
     }
 
     const numeroFormatado = `+55${phoneRaw}`;
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    const originalButtonText = showButtonLoading(submitButton);
+
+    // Mostrar feedback visual melhorado
+    showProcessingFeedback(name);
 
     fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
         method: "POST",
@@ -177,17 +205,201 @@ function handleFormSubmit(e) {
     })
     .then((response) => {
         if (!response.ok) throw new Error("Erro ao enviar para o servidor.");
-        window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
-         alert(`Olá ${name}! Agora você será redirecionado para o pagamento.`);
+        
+        // Sucesso - redirecionar baseado no dispositivo
+        if (isMobileDevice()) {
+            // No mobile, usar redirecionamento direto
+            showSuccessFeedback(name, () => {
+                window.location.href = "https://pay.hub.la/r417VjBTiNi8fGeJdhFf";
+            });
+        } else {
+            // No desktop, abrir nova aba
+            window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
+            showSuccessFeedback(name);
+        }
     })
     .catch((error) => {
-        alert("Erro ao enviar seus dados. Tente novamente.");
+        hideButtonLoading(submitButton, originalButtonText);
+        hideProcessingFeedback();
+        showErrorFeedback();
         console.error(error);
     });
 }
 
+// Feedback visual melhorado
+function showProcessingFeedback(name) {
+    const feedback = document.createElement('div');
+    feedback.id = 'processing-feedback';
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 10000;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.3s ease;
+        max-width: 90%;
+        width: 400px;
+    `;
+    
+    feedback.innerHTML = `
+        <div style="font-size: 2rem; margin-bottom: 15px;">⏳</div>
+        <h3 style="color: #ffffff; margin-bottom: 10px; font-size: 1.4rem;">Processando sua inscrição...</h3>
+        <p style="color: #b8b8b8; margin-bottom: 20px;">Olá ${name}, estamos enviando seus dados.</p>
+        <div style="width: 40px; height: 40px; border: 3px solid rgba(67, 183, 201, 0.3); border-top: 3px solid #43b7c9; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+    `;
+    
+    // Overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'feedback-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(overlay);
+    document.body.appendChild(feedback);
+}
 
-// Modal de checkout
+function hideProcessingFeedback() {
+    const feedback = document.getElementById('processing-feedback');
+    const overlay = document.getElementById('feedback-overlay');
+    if (feedback) feedback.remove();
+    if (overlay) overlay.remove();
+}
+
+function showSuccessFeedback(name, callback = null) {
+    hideProcessingFeedback();
+    
+    const feedback = document.createElement('div');
+    feedback.id = 'success-feedback';
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 10000;
+        border: 1px solid rgba(67, 183, 201, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.3s ease;
+        max-width: 90%;
+        width: 400px;
+    `;
+    
+    const isMobile = isMobileDevice();
+    const redirectText = isMobile ? 
+        "Você será redirecionado para o pagamento em instantes..." : 
+        "Uma nova aba foi aberta com o pagamento.";
+    
+    feedback.innerHTML = `
+        <div style="font-size: 3rem; margin-bottom: 20px;">🎉</div>
+        <h3 style="color: #43b7c9; margin-bottom: 15px; font-size: 1.6rem;">Sucesso!</h3>
+        <p style="color: #ffffff; margin-bottom: 10px; font-weight: 600;">Olá ${name}!</p>
+        <p style="color: #b8b8b8; margin-bottom: 20px; line-height: 1.5;">${redirectText}</p>
+        <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;">
+            <span style="color: #43b7c9; font-size: 14px;">🔒 Pagamento seguro</span>
+            <span style="color: #43b7c9; font-size: 14px;">✅ Acesso imediato</span>
+        </div>
+        ${!isMobile ? '<button onclick="closeSuccessFeedback()" style="background: linear-gradient(45deg, #43b7c9, #6ad4e6); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-weight: 600;">Fechar</button>' : ''}
+    `;
+    
+    // Overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'success-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(overlay);
+    document.body.appendChild(feedback);
+    
+    // Se for mobile e tiver callback, executar após 2 segundos
+    if (isMobile && callback) {
+        setTimeout(callback, 2000);
+    }
+    
+    // Auto-fechar após 5 segundos se não for mobile
+    if (!isMobile) {
+        setTimeout(() => {
+            closeSuccessFeedback();
+        }, 5000);
+    }
+}
+
+function closeSuccessFeedback() {
+    const feedback = document.getElementById('success-feedback');
+    const overlay = document.getElementById('success-overlay');
+    if (feedback) feedback.remove();
+    if (overlay) overlay.remove();
+}
+
+function showErrorFeedback() {
+    const feedback = document.createElement('div');
+    feedback.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 10000;
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.3s ease;
+        max-width: 90%;
+        width: 400px;
+    `;
+    
+    feedback.innerHTML = `
+        <div style="font-size: 2.5rem; margin-bottom: 20px;">❌</div>
+        <h3 style="color: #ff6b6b; margin-bottom: 15px; font-size: 1.4rem;">Erro ao processar</h3>
+        <p style="color: #b8b8b8; margin-bottom: 20px;">Ocorreu um erro ao enviar seus dados. Tente novamente.</p>
+        <button onclick="this.parentElement.remove()" style="
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        ">Tentar novamente</button>
+    `;
+    
+    document.body.appendChild(feedback);
+    
+    // Auto-remover após 5 segundos
+    setTimeout(() => {
+        if (feedback.parentElement) {
+            feedback.remove();
+        }
+    }, 5000);
+}
+
+// Modal de checkout (mantido para compatibilidade)
 function showCheckoutModal() {
     const modal = document.createElement('div');
     modal.className = 'checkout-modal';
@@ -224,11 +436,11 @@ function showCheckoutModal() {
             Você será redirecionado para a página de pagamento seguro em instantes.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 20px;">
-            <span style="color: #00d4aa;">🔒 Pagamento seguro</span>
-            <span style="color: #00d4aa;">✅ Acesso imediato</span>
+            <span style="color: #43b7c9;">🔒 Pagamento seguro</span>
+            <span style="color: #43b7c9;">✅ Acesso imediato</span>
         </div>
         <button onclick="closeCheckoutModal()" style="
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(45deg, #43b7c9, #6ad4e6);
             color: white;
             border: none;
             padding: 12px 24px;
@@ -371,7 +583,7 @@ function initializeParticles() {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = '#00d4aa';
+            ctx.fillStyle = '#43b7c9';
             ctx.fill();
         }
     }
@@ -399,7 +611,7 @@ function initializeParticles() {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 212, 170, ${1 - distance / 100})`;
+                    ctx.strokeStyle = `rgba(67, 183, 201, ${1 - distance / 100})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -424,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: linear-gradient(45deg, #00d4aa, #00a8ff);
+        background: linear-gradient(45deg, #43b7c9, #6ad4e6);
         color: white;
         border: none;
         font-size: 20px;
@@ -432,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0;
         transition: all 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
+        box-shadow: 0 4px 20px rgba(67, 183, 201, 0.3);
     `;
     
     document.body.appendChild(backToTopButton);
@@ -476,8 +688,8 @@ window.addEventListener('load', () => {
     spinner.style.cssText = `
         width: 50px;
         height: 50px;
-        border: 3px solid rgba(0, 212, 170, 0.3);
-        border-top: 3px solid #00d4aa;
+        border: 3px solid rgba(67, 183, 201, 0.3);
+        border-top: 3px solid #43b7c9;
         border-radius: 50%;
         animation: spin 1s linear infinite;
     `;
