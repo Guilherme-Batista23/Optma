@@ -285,10 +285,7 @@ body::after {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #43b7c9; /* Cor da identidade visual */
 }
 
 .section-header p {
@@ -477,10 +474,7 @@ body::after {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 8px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #43b7c9; /* Cor da identidade visual */
 }
 
 .about-text h3 {
@@ -529,10 +523,7 @@ body::after {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #43b7c9; /* Cor da identidade visual */
 }
 
 .price-box {
@@ -603,10 +594,7 @@ body::after {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #43b7c9; /* Cor da identidade visual */
 }
 
 .form-benefits {
@@ -793,48 +781,7 @@ body::after {
     font-size: 1rem;
 }
 
-/* Footer */
-.footer {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 40px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-logo {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 14px;
-    color: #b8b8b8;
-}
-
-.footer-links {
-    display: flex;
-    gap: 30px;
-}
-
-.footer-links a {
-    color: #b8b8b8;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #43b7c9; /* Cor da identidade visual */
-}
-
-.footer-legal {
-    display: flex;
-    gap: 20px;
-}
 
 .footer-legal a {
     color: #b8b8b8;
@@ -873,39 +820,11 @@ body::after {
     justify-content: space-between;
     align-items: center;
     gap: 40px;
-}
-
-.highlight-blue {
+}.highlight-blue {
     color: #43b7c9 !important;
     font-weight: 700;
 }
 
-.section,
-.feature-box {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-.overlay {
-    position: relative;
-    z-index: 1;
-}
-
-.overlay::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6); /* mesma opacidade da .hero::before */
-    z-index: -1;
-}
-
-.hero-text h1 .highlight-blue {
-    all: unset; /* limpa o background-clip herdado do h1 */
-    font-family: "League Spartan", sans-serif;
-    color: #43b7c9;
-    font-weight: 700;
-}
 
 /* MELHORIAS PARA MOBILE - CORREÇÕES ESPECÍFICAS */
 
@@ -1211,4 +1130,71 @@ img {
         font-size: 1.1rem;
     }
 }
+
+.highlight-blue {
+    color: #43b7c9 !important;
+    font-weight: 700 !important;
+}
+
+
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: 0 auto 30px;
+        width: 70%; /* Ajuste o tamanho da imagem para 70% da largura do contêiner */
+        max-width: 250px; /* Define um tamanho máximo para a imagem */
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .header .logo {
+        font-size: 16px;
+    }
+
+    .header .edition {
+        font-size: 12px;
+    }
+
+    .header .event-info {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo {
+        font-size: 14px;
+    }
+
+    .header .logo-icon {
+        font-size: 20px;
+    }
+
+    .header .edition {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .header .event-info {
+        font-size: 10px;
+    }
+
+    .about-image {
+        width: 80%;
+        max-width: 200px;
+    }
+}
+
+.highlight-blue {
+    color: #43b7c9; /* Cor da identidade visual */
+}
+
 

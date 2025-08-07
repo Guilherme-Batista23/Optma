@@ -12,6 +12,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+
 // Observar todos os elementos com classes de animação
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
