@@ -1094,7 +1094,7 @@ body::after {
 
 /* AJUSTE: Logo maior na seção "Problem" */
 .highlight-image {
-    width: 120px; /* Logo maior */
+    width: 150px; /* Tamanho padrão para desktop */
     height: auto;
     margin-right: 16px;
     vertical-align: middle;
@@ -1106,7 +1106,7 @@ body::after {
         align-items: center; /* Centraliza os itens */
     }
     .highlight-image {
-        width: 100px; /* Tamanho para mobile */
+        width: 180px !important; /* Aumentando o logo no mobile */
         margin-right: 0;
         margin-bottom: 15px; /* Espaçamento abaixo do logo */
     }
