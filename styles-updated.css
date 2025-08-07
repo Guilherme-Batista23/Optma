@@ -60,7 +60,6 @@ body::after {
     font-weight: 600;
     font-size: 18px;
     flex-shrink: 0;
-    
 }
 
 .logo-icon {
@@ -832,19 +831,15 @@ body::after {
 /* Media queries mais abrangentes para diferentes tamanhos de tela */
 @media (max-width: 480px) {
     /* Header mobile - melhorias específicas */
-   .header {
-    height: 70px; /* ajuste conforme o tamanho final do logo */
-    padding: 0 20px; /* horizontal apenas */
-    display: flex;
-    align-items: center;
-}
+    .header {
+        padding: 10px 0;
+    }
     
-.header-content {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+    .header-content {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
     
     .logo {
         font-size: 16px;
@@ -1225,7 +1220,7 @@ img {
 
 
 .header-logo {
-    height: 180px; /* pode ajustar para 70px, 80px... conforme a estética */
+    height: 180px !important; /* Ajuste o tamanho conforme necessário */
     width: auto;
     margin-right: 5px;
 }
@@ -1253,3 +1248,33 @@ img {
     }
 }
 
+/* Novo agrupamento */
+.logo-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Deixa a logo maior, mas fora do fluxo do header */
+.header-logo {
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+/* Empurra o texto da logo para a direita da imagem */
+.logo-text {
+    padding-left: 210px; /* um pouco maior que a logo para não sobrepor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Garante que a altura da barra azul fique natural */
+.header {
+    padding: 15px 0;
+    overflow: visible; /* deixa a imagem ultrapassar */
+}
