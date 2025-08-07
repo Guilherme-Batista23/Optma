@@ -1320,3 +1320,26 @@ img {
         line-height: 1.5 !important;
     }
 }
+
+
+/* AJUSTE FINO PARA A SEÇÃO 'PROBLEM' NO MOBILE */
+@media (max-width: 768px) {
+    .solution-highlight {
+        flex-direction: column; /* Coloca o logo acima do texto */
+        align-items: center;    /* Centraliza tudo */
+        text-align: center;     /* Centraliza o texto */
+        gap: 20px;              /* Aumenta o espaço entre o logo e o texto */
+        padding: 24px 16px;     /* Adiciona um respiro interno */
+    }
+
+    .highlight-image {
+        width: 160px;           /* Define um tamanho bom para o logo no mobile */
+        margin-right: 0;        /* Remove a margem lateral que não é mais necessária */
+        margin-bottom: 0;       /* Remove a margem inferior (o 'gap' já cuida disso) */
+    }
+
+    .solution-highlight span {
+        font-size: 1rem;        /* Ajusta o tamanho da fonte do texto para mobile */
+        line-height: 1.5;       /* Melhora a legibilidade */
+    }
+}
