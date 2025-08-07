@@ -1467,3 +1467,22 @@ img {
         background: none !important; /* remove o escurecimento */
     }
 }
+
+@media (max-width: 768px) {
+    body {
+        background: url('BackgroundFernanda.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: scroll !important;
+        position: relative;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.4); /* camada sutil escura com transparência */
+        z-index: -1;
+        pointer-events: none;
+    }
+}
