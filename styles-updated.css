@@ -6,24 +6,24 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
-  position: relative;
-  background: url('BackgroundFernanda.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: #000; /* fallback */
-  color: #fff;
-  z-index: 0;
-  overflow-x: hidden;
+    position: relative;
+    background: url('BackgroundFernanda.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000; /* fallback */
+    color: #fff;
+    z-index: 0;
+    overflow-x: hidden;
 }
 
 /* Camada escura por cima do body (igual a .hero::before) */
 body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-  pointer-events: none;
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -49,6 +49,8 @@ body::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .logo {
@@ -57,6 +59,7 @@ body::after {
     gap: 10px;
     font-weight: 600;
     font-size: 18px;
+    flex-shrink: 0;
 }
 
 .logo-icon {
@@ -77,6 +80,8 @@ body::after {
     gap: 8px;
     font-size: 14px;
     color: #b8b8b8;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .calendar-icon {
@@ -94,14 +99,12 @@ body::after {
 }
 
 .hero-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
-
-
 
 .hero-text h1 {
     font-family: 'League Spartan', sans-serif;
@@ -111,7 +114,6 @@ body::after {
     margin-bottom: 24px;
     color: #fff; /* cor padrão do h1 */
 }
-
 
 .hero-text p {
     font-size: 1.1rem;
@@ -150,14 +152,15 @@ body::after {
 }
 
 .hero-image img {
-  width: 280px; /* ou 240px se quiser menor */
-  height: auto;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 280px; /* ou 240px se quiser menor */
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
 .profile-image {
-  width: 300px;
+    width: 300px;
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
@@ -167,7 +170,7 @@ body::after {
 }
 
 .profile-image::before {
-    content: \'\';
+    content: '';
     position: absolute;
     top: -50%;
     left: -50%;
@@ -179,11 +182,11 @@ body::after {
 }
 
 .profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 10%;
-  transform: scale(1.05);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+    transform: scale(1.05);
 }
 
 @keyframes rotate {
@@ -346,7 +349,7 @@ body::after {
 }
 
 .content-card li::before {
-    content: \'✓\';
+    content: '✓';
     position: absolute;
     left: 0;
     color: #43b7c9; /* Cor da identidade visual */
@@ -499,7 +502,7 @@ body::after {
 }
 
 .about-achievements li::before {
-    content: \'⭐\';
+    content: '⭐';
     position: absolute;
     left: 0;
     font-size: 1.2rem;
@@ -866,116 +869,291 @@ body::after {
 }
 
 .hero-flex-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
 }
 
-/* Responsividade: imagem abaixo no mobile */
-@media (max-width: 768px) {
-  .profile-image {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
-  }
+.highlight-blue {
+    color: #43b7c9 !important;
+    font-weight: 700;
+}
 
-    .hero-text h1 {
-    font-size: 1.6rem;
-    line-height: 1.4;
-    text-align: center;
-    padding: 0 16px;
-  }
+.section,
+.feature-box {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
 
-   h1 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-    text-align: left;
-    word-break: break-word;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p, span, li {
-    font-size: 1rem;
-    line-height: 1.4rem;
-  }
-
-  .hero {
-    padding: 80px 20px;
-    text-align: left;
-  }
-
-  .card {
-    margin: 20px 0;
-    padding: 20px;
-  }
-
-  .highlight {
-    font-size: 1rem;
-  }
-
-  .hero img {
-    max-width: 100%;
-    height: auto;
-  }
-
-    .hero-flex-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-image {
-    order: 2;
-  }
-
-  .hero-text {
-    order: 1;
-  }
-
-
-   .hero-image img {
-    display: block;
-    margin: 24px auto 0 auto;
-    max-width: 180px;
+.overlay {
     position: relative;
-    right: 0;
-    top: 0;
-  }
+    z-index: 1;
+}
 
+.overlay::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* mesma opacidade da .hero::before */
+    z-index: -1;
+}
 
-  .hero-text p {
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-  }
+.hero-text h1 .highlight-blue {
+    all: unset; /* limpa o background-clip herdado do h1 */
+    font-family: "League Spartan", sans-serif;
+    color: #43b7c9;
+    font-weight: 700;
+}
 
-  .profile-image {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
-  }
-    
-    .urgency-content {
-        padding: 0 10px;
+/* MELHORIAS PARA MOBILE - CORREÇÕES ESPECÍFICAS */
+
+/* Media queries mais abrangentes para diferentes tamanhos de tela */
+@media (max-width: 480px) {
+    /* Header mobile - melhorias específicas */
+    .header {
+        padding: 10px 0;
     }
     
-    .urgency-text {
-        font-size: 1.2rem;
-    }
-    
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .timeline-item {
-        grid-template-columns: 1fr;
+    .header-content {
+        flex-direction: column;
+        gap: 8px;
         text-align: center;
     }
     
+    .logo {
+        font-size: 16px;
+        gap: 8px;
+        justify-content: center;
+    }
+    
+    .logo-icon {
+        font-size: 20px;
+    }
+    
+    .edition {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+    
+    .event-info {
+        font-size: 12px;
+        justify-content: center;
+    }
+    
+    /* H1 mobile - correções específicas */
+    .hero-text h1 {
+        font-size: 1.4rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 16px;
+        text-align: center;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        padding: 100px 0 40px;
+        min-height: auto;
+    }
+    
+    .hero-flex-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+    
+    .hero-text {
+        order: 1;
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .hero-image {
+        order: 2;
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+    
+    .hero-text p {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 24px;
+    }
+    
+    .cta-button {
+        padding: 14px 24px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    /* Container mobile */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Seções gerais mobile */
+    .content-section,
+    .schedule-section,
+    .target-section,
+    .about-section,
+    .offer-section,
+    .form-section,
+    .faq-section,
+    .final-cta-section {
+        padding: 60px 0;
+    }
+    
+    /* Títulos h2 mobile */
+    .section-header h2,
+    .problem-content h2,
+    .about-text h2,
+    .offer-header h2,
+    .form-header h2,
+    .final-cta-content h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+    
+    /* Parágrafos mobile */
+    .section-header p,
+    .problem-content p,
+    .final-cta-content p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    /* Grids mobile */
+    .content-grid,
     .target-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .content-card {
+        padding: 24px 20px;
+    }
+    
+    /* Timeline mobile */
+    .timeline-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 20px;
+        gap: 16px;
+    }
+    
+    .timeline-hour {
+        font-size: 1.5rem;
+    }
+    
+    /* About section mobile */
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    /* Guarantee details mobile */
+    .guarantee-details {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Form mobile */
+    .registration-form {
+        padding: 24px 20px;
+    }
+    
+    .form-header h2 {
+        font-size: 1.6rem !important;
+    }
+    
+    .checkout-button {
+        font-size: 18px;
+        padding: 16px;
+    }
+    
+    /* Security badges mobile */
+    .security-badges {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    /* FAQ mobile */
+    .faq-question {
+        padding: 20px 16px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer p {
+        padding: 0 16px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .footer-legal {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Media query para tablets */
+@media (max-width: 768px) and (min-width: 481px) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+    
+    .hero-flex-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+    }
+    
+    .profile-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .content-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .timeline-item {
+        grid-template-columns: 80px 1fr;
+        gap: 20px;
     }
     
     .about-content {
@@ -987,93 +1165,50 @@ body::after {
     .guarantee-details {
         grid-template-columns: 1fr;
     }
-    
-    .security-badges {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-/*Media acaba aqui*/
-
-.highlight-blue {
-  color: #43b7c9 !important;
-  font-weight: 700;
 }
 
-
-.section,
-.feature-box {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+/* Correções adicionais para overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
 }
-
-.overlay {
-  position: relative;
-  z-index: 1;
-}
-
-.overlay::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* mesma opacidade da .hero::before */
-  z-index: -1;
-}
-
-
-.hero-text h1 .highlight-blue {
-  all: unset; /* limpa o background-clip herdado do h1 */
-  font-family: "League Spartan", sans-serif;
-  color: #43b7c9;
-  font-weight: 700;
-}
-
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-@media (max-width: 768px) {
-  .hero-text {
-    order: 1;
-    width: 100%;
-  }
-
-  .hero-image {
-    order: 2;
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-image img {
-    max-width: 300px;
+/* Garantir que imagens não quebrem o layout */
+img {
+    max-width: 100%;
     height: auto;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-
-  html {
-    overflow-x: hidden;
-  }
 }
+
+/* Melhorar legibilidade em telas pequenas */
+@media (max-width: 480px) {
+    .highlight-blue {
+        word-break: break-word;
+    }
+    
+    .solution-highlight {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 20px 16px;
+    }
+    
+    .recording-info {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        font-size: 0.9rem;
+    }
+    
+    .urgency-content {
+        padding: 0 16px;
+    }
+    
+    .urgency-text {
+        font-size: 1.1rem;
+    }
+}
+
