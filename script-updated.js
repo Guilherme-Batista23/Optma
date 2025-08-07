@@ -170,20 +170,15 @@ function handleFormSubmit(e) {
 
     const numeroFormatado = `+55${phoneRaw}`;
 
-    fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome: name, email, mensagem: numeroFormatado })
-    })
-    .then((response) => {
-        if (!response.ok) throw new Error("Erro ao enviar para o servidor.");
-        window.open("https://pay.hub.la/r417VjBTiNi8fGeJdhFf", "_blank");
-         alert(`Olá ${name}! Agora você será redirecionado para o pagamento.`);
-    })
-    .catch((error) => {
-        alert("Erro ao enviar seus dados. Tente novamente.");
-        console.error(error);
-    });
+  // Dispara o fetch sem esperar a resposta
+fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nome: name, email, mensagem: numeroFormatado })
+});
+
+// Redireciona IMEDIATAMENTE
+window.location.href = "https://pay.hub.la/r417VjBTiNi8fGeJdhFf";
 }
 
 
