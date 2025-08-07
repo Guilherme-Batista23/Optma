@@ -836,15 +836,20 @@ body::after {
     }
     
     .header-content {
-        flex-direction: column;
-        gap: 8px;
+        display: flex;
+        flex-direction: column; /* Organiza os itens em coluna */
+        align-items: center; /* Centraliza os itens */
         text-align: center;
-    }
-    
-    .logo {
-        font-size: 16px;
         gap: 8px;
-        justify-content: center;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column; /* Itens do logo em coluna */
+        align-items: center; /* Centraliza os itens do logo */
+        gap: 5px; /* Espaçamento entre os itens do logo */
+        font-size: 16px;
+        font-weight: 600;
     }
     
     .logo-icon {
@@ -857,7 +862,7 @@ body::after {
     }
     
     .event-info {
-        font-size: 12px;
+        font-size: 14px; /* Aumentei um pouco para melhor leitura */
         justify-content: center;
     }
     
@@ -873,7 +878,7 @@ body::after {
     
     /* Hero section mobile */
     .hero {
-        padding: 100px 0 40px;
+        padding: 140px 0 40px; /* Aumentei o padding superior para não sobrepor o header */
         min-height: auto;
     }
     
@@ -888,6 +893,13 @@ body::after {
         width: 100%;
         padding: 0 10px;
     }
+
+    /* AJUSTE: Diminuir a fonte do subtítulo */
+    .hero-text p {
+        font-size: 1rem !important; /* Fonte diminuída */
+        line-height: 1.5 !important;
+        margin-bottom: 24px;
+    }
     
     .hero-image {
         order: 2;
@@ -901,12 +913,6 @@ body::after {
         width: 150px;
         height: 150px;
         margin: 0 auto;
-    }
-    
-    .hero-text p {
-        font-size: 0.95rem !important;
-        line-height: 1.4 !important;
-        margin-bottom: 24px;
     }
     
     .cta-button {
@@ -1083,6 +1089,26 @@ body::after {
     
     .guarantee-details {
         grid-template-columns: 1fr;
+    }
+}
+
+/* AJUSTE: Logo maior na seção "Problem" */
+.highlight-image {
+    width: 120px; /* Logo maior */
+    height: auto;
+    margin-right: 16px;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .solution-highlight {
+        flex-direction: column;
+        align-items: center; /* Centraliza os itens */
+    }
+    .highlight-image {
+        width: 100px; /* Tamanho para mobile */
+        margin-right: 0;
+        margin-bottom: 15px; /* Espaçamento abaixo do logo */
     }
 }
 
