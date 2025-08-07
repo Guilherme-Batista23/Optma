@@ -1455,3 +1455,15 @@ img {
     font-weight: 500;
   }
 }
+
+@media (max-width: 768px) {
+    body {
+        background: #000 !important; /* remove a imagem e deixa só o preto */
+        background-image: none !important;
+        background-attachment: initial !important;
+    }
+
+    body::after {
+        background: none !important; /* remove o escurecimento */
+    }
+}

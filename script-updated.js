@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax effect no hero
     initializeParallax();
     
-    /*
+    
     setTimeout(() => {
         initializeParticles();
-    }, 500);*/
+    }, 500);
 });
 
 // Função para rolar até o formulário
@@ -331,7 +331,7 @@ function initializeParticles() {
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
     canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.3';
+    canvas.style.opacity = '0.4';
     
     document.body.appendChild(canvas);
     
