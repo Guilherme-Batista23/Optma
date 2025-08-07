@@ -1369,3 +1369,38 @@ img {
         max-width: 90%; /* Evita que o texto encoste nas bordas */
     }
 }
+
+.urgency-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #43b7c9, #6ad4e6); /* Cor da identidade visual */
+  padding: 12px 24px;
+  border-radius: 30px;
+  margin: 40px auto; /* Centraliza horizontalmente */
+  font-weight: 700;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(67, 183, 201, 0.3);
+  width: fit-content;
+  max-width: 90%;
+  text-align: center;
+}
+
+.urgency-mini .urgency-icon {
+  font-size: 20px;
+}
+
+/* Mobile: Centralização e responsividade */
+@media (max-width: 480px) {
+  .urgency-mini {
+    flex-direction: row;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+
+  .urgency-mini .urgency-icon {
+    font-size: 18px;
+  }
+}
