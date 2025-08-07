@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax effect no hero
     initializeParallax();
     
-    // Inicializar efeitos adicionais
+    /*
     setTimeout(() => {
         initializeParticles();
-    }, 500);
+    }, 500);*/
 });
 
 // Função para rolar até o formulário

@@ -1431,3 +1431,27 @@ img {
     max-width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+
+  .header-logo {
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .logo span {
+    font-size: 14px;
+  }
+
+  .edition {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
