@@ -1404,3 +1404,30 @@ img {
     font-size: 18px;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .solution-highlight {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .solution-highlight .highlight-image {
+    width: 120px !important;
+    margin-bottom: 10px;
+  }
+
+  .solution-highlight span {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+}
