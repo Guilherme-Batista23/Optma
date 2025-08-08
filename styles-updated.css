@@ -113,6 +113,7 @@ body::after {
     line-height: 1.2;
     margin-bottom: 24px;
     color: #fff; /* cor padrão do h1 */
+    letter-spacing: -2px; /* <-- Esta é a linha que foi adicionada/modificada */
 }
 
 .hero-text p {
@@ -134,7 +135,9 @@ body::after {
     color: white;
     border: none;
     padding: 18px 36px;
-    border-radius: 50px;
+    border-radius: 25px;
+    justify-content: center;
+    text-align: center;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
@@ -160,33 +163,32 @@ body::after {
 }
 
 .profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    position: relative;
+  padding: 0;
+  margin: 0 auto;
+  background: none;
+  border-radius: 8px;
+  border: none;
+  box-shadow: none;
 }
 
-.profile-image::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(67, 183, 201, 0.3), transparent); /* Cor da identidade visual */
-    animation: rotate 3s linear infinite;
-    z-index: -1;
+
+.profile-image::before,
+.profile-image::after {
+  display: none !important; /* remove pseudo-elementos girando */
 }
 
 .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 10%;
-    transform: scale(1.05);
+  width: 1260px;              /* 🔥 tamanho bom para destaque no desktop */
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .profile-image img {
+    width: 200px;
+  }
 }
 
 @keyframes rotate {
@@ -257,9 +259,9 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.05);
-    padding: 24px;
+    padding: 16px;
     border-radius: 15px;
     max-width: 900px;
     margin: 0 auto;
@@ -458,27 +460,31 @@ body::after {
 
 .about-content {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 60px;
     align-items: center;
 }
 
 .about-image img {
     width: 100%;
+    max-width: 400px; /* NOVO: limite no desktop */
+    height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .about-text h2 {
     font-family: 'League Spartan', sans-serif; /* Fonte do título */
-    font-size: 2.5rem;
-    font-weight: 700;
+       font-size: 3.2rem;
+    font-weight: 800;
     margin-bottom: 8px;
     color: #43b7c9; /* Cor da identidade visual */
 }
 
 .about-text h3 {
-    font-size: 1.4rem;
+      font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.9;
     color: #43b7c9; /* Cor da identidade visual */
     margin-bottom: 24px;
 }
@@ -654,7 +660,8 @@ body::after {
     color: white;
     border: none;
     padding: 20px;
-    border-radius: 15px;
+      border-radius: 10px;
+    justify-content: center;
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
@@ -870,6 +877,7 @@ body::after {
     .hero-text h1 {
         font-size: 1.4rem !important;
         line-height: 1.3 !important;
+          letter-spacing: -0.5px; /* Exemplo: um pouco menos apertado no mobile */
         margin-bottom: 16px;
         text-align: center;
         word-break: break-word;
@@ -916,10 +924,10 @@ body::after {
     }
     
     .cta-button {
-        padding: 14px 24px;
-        font-size: 16px;
+        padding: 10px 17px;
+        font-size: 12px;
         width: 100%;
-        max-width: 280px;
+        max-width: 200px;
         margin: 0 auto;
     }
     
@@ -1096,7 +1104,7 @@ body::after {
 .highlight-image {
     width: 150px; /* Tamanho padrão para desktop */
     height: auto;
-    margin-right: 16px;
+    margin-right: 8px;
     vertical-align: middle;
 }
 
@@ -1108,7 +1116,7 @@ body::after {
     .highlight-image {
         width: 180px !important; /* Aumentando o logo no mobile */
         margin-right: 0;
-        margin-bottom: 15px; /* Espaçamento abaixo do logo */
+        margin-bottom: 8px; /* Espaçamento abaixo do logo */
     }
 }
 
@@ -1171,17 +1179,18 @@ img {
         text-align: center;
     }
 
-    .about-image {
-        margin: 0 auto 30px;
-        width: 70%; /* Ajuste o tamanho da imagem para 70% da largura do contêiner */
-        max-width: 250px; /* Define um tamanho máximo para a imagem */
-    }
+   .about-image {
+    width: 100%;
+    max-width: 500px; /* tamanho maior no desktop */
+    margin: 0 auto;
+}
 
-    .about-image img {
-        width: 100%;
-        height: auto;
-    }
-
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
     .header .logo {
         font-size: 16px;
     }
@@ -1214,8 +1223,9 @@ img {
     }
 
     .about-image {
-        width: 80%;
-        max-width: 200px;
+        width: 80%; /* Mantém a proporção */
+        max-width: 280px; /* Exemplo: de 200px para 280px */
+        margin: 0 auto; /* Garante a centralização */
     }
 }
 
@@ -1308,7 +1318,7 @@ img {
 /* AJUSTE FORÇADO PARA O SUBTÍTULO NO MOBILE */
 @media (max-width: 480px) {
     .hero-text p {
-        font-size: 0.85rem !important; /* Reduzindo ainda mais e forçando a aplicação */
+        font-size: 0.7rem !important; /* Reduzindo ainda mais e forçando a aplicação */
         line-height: 1.4 !important;   /* Ajustando a altura da linha */
     }
 }
@@ -1400,9 +1410,7 @@ img {
     padding: 10px 20px;
   }
 
-  .urgency-mini .urgency-icon {
-    font-size: 18px;
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -1422,7 +1430,7 @@ img {
 
   .solution-highlight .highlight-image {
     width: 120px !important;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .solution-highlight span {
@@ -1484,5 +1492,145 @@ img {
     background: rgba(0, 0, 0, 0.3); /* camada escura leve */
     z-index: -1;
     pointer-events: none;
+  }
+}
+
+@media (max-width: 480px) {
+    .about-text h3 {
+        font-size: 1.2rem !important;
+        font-weight: 300 !important;
+        opacity: 0.8 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-highlight .highlight-image {
+        width: 700px; /* Ajuste o tamanho conforme necessário */
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+  .problem-section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .problem-section .solution-highlight {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important; /* Reduzido de 0 para 8px para aproximar */
+    padding: 12px 16px !important; /* Reduzido padding */
+    margin: -16px 0 -12px 0 !important; /* Ajustado margens */
+  }
+
+  .problem-section .highlight-image {
+    width: 240px !important;
+    margin: 0 0 4px 0 !important; /* Pequena margem inferior */
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .problem-section .solution-highlight > span {
+    display: block !important;
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .problem-section .highlight-image {
+    width: 260px !important;  /* ou 280px se quiser maior */
+    margin-bottom: 12px !important;
+  }
+}
+
+.problem-section .highlight-image {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.solution-highlight {
+  padding: 20px !important;
+  height: 180px !important; /* Ajuste conforme necessário */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo com tamanho fixo */
+.solution-highlight .highlight-image {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .solution-highlight {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 8px 10px !important; /* Reduzido ainda mais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px !important; /* Gap ainda menor para telas pequenas */
+  }
+
+  .solution-highlight .highlight-image {
+    max-width: 180px;
+    height: auto;
+    margin: 0 auto 2px auto !important; /* Margem inferior mínima */
+  }
+
+  .solution-highlight span {
+    margin: 0 !important;
+    font-size: 0.95rem !important; /* Texto ligeiramente menor */
+    text-align: center;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .problem-section .solution-highlight {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .problem-section .highlight-image {
+    width: 220px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .problem-section .solution-highlight > span {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.93rem !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+    display: block !important;
+  }
+
+  .problem-section .solution-highlight > span span {
+    line-height: 1.1 !important;
+    display: inline !important;
   }
 }
