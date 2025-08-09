@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'League Spartan', sans-serif;
     position: relative;
@@ -31,6 +30,7 @@ body::after {
     margin: 0 auto;
     padding: 0 20px;
 }
+
 
 /* Header */
 .header {
@@ -87,6 +87,7 @@ body::after {
 .calendar-icon {
     font-size: 16px;
 }
+
 
 /* Hero Section */
 .hero {
@@ -196,6 +197,7 @@ body::after {
     100% { transform: rotate(360deg); }
 }
 
+
 /* Urgency Banner */
 .urgency-banner {
     background: linear-gradient(45deg, #43b7c9, #6ad4e6); /* Cor da identidade visual */
@@ -227,6 +229,7 @@ body::after {
     color: #ffffff;
     opacity: 0.9;
 }
+
 
 /* Problem Section */
 .problem-section {
@@ -270,6 +273,7 @@ body::after {
 .highlight-icon {
     font-size: 2rem;
 }
+
 
 /* Content Sections */
 .content-section {
@@ -355,6 +359,7 @@ body::after {
     font-weight: bold;
 }
 
+
 /* Schedule Section */
 .schedule-section {
     padding: 100px 0;
@@ -414,6 +419,7 @@ body::after {
     font-size: 1.5rem;
 }
 
+
 /* Target Section */
 .target-section {
     padding: 100px 0;
@@ -451,6 +457,7 @@ body::after {
     color: #b8b8b8;
     line-height: 1.6;
 }
+
 
 /* About Section */
 .about-section {
@@ -507,6 +514,7 @@ body::after {
     left: 0;
     font-size: 1.2rem;
 }
+
 
 /* Offer Section */
 .offer-section {
@@ -578,6 +586,7 @@ body::after {
     color: #b8b8b8;
     line-height: 1.6;
 }
+
 
 /* Form Section */
 .form-section {
@@ -691,6 +700,7 @@ body::after {
     gap: 6px;
 }
 
+
 /* FAQ Section */
 .faq-section {
     padding: 100px 0;
@@ -749,6 +759,7 @@ body::after {
     line-height: 1.6;
 }
 
+
 /* Final CTA Section */
 .final-cta-section {
     padding: 100px 0;
@@ -796,6 +807,7 @@ body::after {
     font-size: 14px;
 }
 
+
 /* Animations */
 .fade-in-up {
     opacity: 0;
@@ -833,11 +845,14 @@ body::after {
 }
 
 
+
 /* MELHORIAS PARA MOBILE - CORREÇÕES ESPECÍFICAS */
+
 
 /* Media queries mais abrangentes para diferentes tamanhos de tela */
 @media (max-width: 480px) {
-    /* Header mobile - melhorias específicas */
+
+/* Header mobile - melhorias específicas */
     .header {
         padding: 10px 0;
     }
@@ -873,18 +888,18 @@ body::after {
         justify-content: center;
     }
     
-    /* H1 mobile - correções específicas */
+
+/* H1 mobile - correções específicas */
     .hero-text h1 {
         font-size: 1.4rem !important;
         line-height: 1.3 !important;
           letter-spacing: -0.5px; /* Exemplo: um pouco menos apertado no mobile */
         margin-bottom: 16px;
         text-align: center;
-        word-break: break-word;
-        hyphens: auto;
     }
     
-    /* Hero section mobile */
+
+/* Hero section mobile */
     .hero {
         padding: 140px 0 40px; /* Aumentei o padding superior para não sobrepor o header */
         min-height: auto;
@@ -902,7 +917,8 @@ body::after {
         padding: 0 10px;
     }
 
-    /* AJUSTE: Diminuir a fonte do subtítulo */
+
+/* AJUSTE: Diminuir a fonte do subtítulo */
     .hero-text p {
         font-size: 1rem !important; /* Fonte diminuída */
         line-height: 1.5 !important;
@@ -931,12 +947,14 @@ body::after {
         margin: 0 auto;
     }
     
-    /* Container mobile */
+
+/* Container mobile */
     .container {
         padding: 0 15px;
     }
     
-    /* Seções gerais mobile */
+
+/* Seções gerais mobile */
     .content-section,
     .schedule-section,
     .target-section,
@@ -948,7 +966,8 @@ body::after {
         padding: 60px 0;
     }
     
-    /* Títulos h2 mobile */
+
+/* Títulos h2 mobile */
     .section-header h2,
     .problem-content h2,
     .about-text h2,
@@ -960,7 +979,8 @@ body::after {
         margin-bottom: 16px;
     }
     
-    /* Parágrafos mobile */
+
+/* Parágrafos mobile */
     .section-header p,
     .problem-content p,
     .final-cta-content p {
@@ -968,7 +988,8 @@ body::after {
         line-height: 1.4;
     }
     
-    /* Grids mobile */
+
+/* Grids mobile */
     .content-grid,
     .target-grid {
         grid-template-columns: 1fr;
@@ -979,7 +1000,8 @@ body::after {
         padding: 24px 20px;
     }
     
-    /* Timeline mobile */
+
+/* Timeline mobile */
     .timeline-item {
         grid-template-columns: 1fr;
         text-align: center;
@@ -991,20 +1013,23 @@ body::after {
         font-size: 1.5rem;
     }
     
-    /* About section mobile */
+
+/* About section mobile */
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 30px;
     }
     
-    /* Guarantee details mobile */
+
+/* Guarantee details mobile */
     .guarantee-details {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     
-    /* Form mobile */
+
+/* Form mobile */
     .registration-form {
         padding: 24px 20px;
     }
@@ -1018,14 +1043,16 @@ body::after {
         padding: 16px;
     }
     
-    /* Security badges mobile */
+
+/* Security badges mobile */
     .security-badges {
         flex-direction: column;
         align-items: center;
         gap: 12px;
     }
     
-    /* FAQ mobile */
+
+/* FAQ mobile */
     .faq-question {
         padding: 20px 16px;
         font-size: 0.95rem;
@@ -1036,7 +1063,8 @@ body::after {
         font-size: 0.9rem;
     }
     
-    /* Footer mobile */
+
+/* Footer mobile */
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -1053,6 +1081,7 @@ body::after {
         gap: 8px;
     }
 }
+
 
 /* Media query para tablets */
 @media (max-width: 768px) and (min-width: 481px) {
@@ -1100,6 +1129,7 @@ body::after {
     }
 }
 
+
 /* AJUSTE: Logo maior na seção "Problem" */
 .highlight-image {
     width: 150px; /* Tamanho padrão para desktop */
@@ -1120,6 +1150,7 @@ body::after {
     }
 }
 
+
 /* Correções adicionais para overflow */
 html, body {
     overflow-x: hidden;
@@ -1130,18 +1161,17 @@ html, body {
     box-sizing: border-box;
 }
 
+
 /* Garantir que imagens não quebrem o layout */
 img {
     max-width: 100%;
     height: auto;
 }
 
+
 /* Melhorar legibilidade em telas pequenas */
 @media (max-width: 480px) {
-    .highlight-blue {
-        word-break: break-word;
-    }
-    
+
     .solution-highlight {
         flex-direction: column;
         text-align: center;
@@ -1169,6 +1199,7 @@ img {
     color: #43b7c9 !important;
     font-weight: 700 !important;
 }
+
 
 
 
@@ -1284,6 +1315,7 @@ img {
     }
 }
 
+
 /* Novo agrupamento */
 .logo-wrapper {
     position: relative;
@@ -1291,6 +1323,7 @@ img {
     align-items: center;
     gap: 10px;
 }
+
 
 /* Deixa a logo maior, mas fora do fluxo do header */
 .header-logo {
@@ -1301,6 +1334,7 @@ img {
     left: 0;
 }
 
+
 /* Empurra o texto da logo para a direita da imagem */
 .logo-text {
     padding-left: 210px; /* um pouco maior que a logo para não sobrepor */
@@ -1309,11 +1343,13 @@ img {
     justify-content: center;
 }
 
+
 /* Garante que a altura da barra azul fique natural */
 .header {
     padding: 15px 0;
     overflow: visible; /* deixa a imagem ultrapassar */
 }
+
 
 /* AJUSTE FORÇADO PARA O SUBTÍTULO NO MOBILE */
 @media (max-width: 480px) {
@@ -1323,6 +1359,7 @@ img {
     }
 }
 
+
 /* Ajuste para tablets (opcional, mas recomendado) */
 @media (max-width: 768px) and (min-width: 481px) {
     .hero-text p {
@@ -1330,6 +1367,7 @@ img {
         line-height: 1.5 !important;
     }
 }
+
 
 
 /* AJUSTE FINO PARA A SEÇÃO 'PROBLEM' NO MOBILE */
@@ -1355,9 +1393,10 @@ img {
 }
 
 
+
 /* =============================================== */
+
 /* CORREÇÃO FINAL PARA SEÇÃO 'PROBLEM' NO MOBILE   */
-/* =============================================== */
 @media (max-width: 768px) {
     .problem-section .solution-highlight {
         display: flex;
@@ -1401,6 +1440,7 @@ img {
 .urgency-mini .urgency-icon {
   font-size: 20px;
 }
+
 
 /* Mobile: Centralização e responsividade */
 @media (max-width: 480px) {
@@ -1503,12 +1543,6 @@ img {
     }
 }
 
-@media (max-width: 480px) {
-    .solution-highlight .highlight-image {
-        width: 700px; /* Ajuste o tamanho conforme necessário */
-        height: auto;
-    }
-}
 
 @media (max-width: 768px) {
   .problem-section {
@@ -1562,6 +1596,7 @@ img {
   align-items: center;
   justify-content: center;
 }
+
 /* Logo com tamanho fixo */
 .solution-highlight .highlight-image {
   max-width: 200px;
@@ -1632,5 +1667,84 @@ img {
   .problem-section .solution-highlight > span span {
     line-height: 1.1 !important;
     display: inline !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .problem-section .container {
+    padding: 0 12px !important;
+  }
+
+  .problem-content {
+    margin-top: -12px !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .solution-highlight {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .solution-highlight img.highlight-image {
+    width: 220px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto 8px auto !important;
+  }
+
+  .solution-highlight span {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    max-width: 90%;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .problem-section .highlight-image {
+    width: 100px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    line-height: 0 !important;     /* IMPORTANTE: remove espaçamento interno de linha */
+  }
+
+  .problem-section .solution-highlight {
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .problem-section .solution-highlight > span {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    font-size: 1rem !important;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .problem-section .solution-highlight img.highlight-image {
+    width: 180px !important;
+    height: auto !important;
+    max-width: none !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
 }
