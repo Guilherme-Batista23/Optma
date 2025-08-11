@@ -1819,3 +1819,40 @@ img {
   font-size: 1.2rem;   /* antes 1.2rem */
   font-weight: 500;    /* deixa mais encorpado */
 }
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.testimonials-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.testimonial-card {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  color: #b8b8b8;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.testimonial-name {
+  display: block;
+  text-align: right;
+  font-weight: 600;
+  color: #43b7c9;
+  font-size: 1rem;
+}

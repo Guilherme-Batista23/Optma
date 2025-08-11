@@ -178,7 +178,7 @@ fetch("https://n8n.srv880765.hstgr.cloud/webhook/receber-lead", {
 });
 
 // Redireciona IMEDIATAMENTE
-window.location.href = "https://pay.hub.la/r417VjBTiNi8fGeJdhFf";
+window.location.href = "https://pay.hub.la/1uOlRYOpFqLZvTTWTUZo?_gl=1*pg16g0*_gcl_au*MjEzODk3MDAxNi4xNzUxODk5Mjg0&_path=/checkout/1uOlRYOpFqLZvTTWTUZo";
 }
 
 
