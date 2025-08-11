@@ -300,23 +300,27 @@ function initializeSmoothScroll() {
 
 // Efeito parallax no hero
 function initializeParallax() {
-    if (window.innerWidth > 768) {
-        const hero = document.querySelector('.hero');
-        const profileImage = document.querySelector('.profile-image');
+  const hero = document.querySelector('.hero');
+  const profileImage = document.querySelector('.profile-image');
+  if (!profileImage) return;
 
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
+  const onScroll = () => {
+    const scrolled = window.pageYOffset;
 
-            if (profileImage) {
-                profileImage.style.transform = `translateY(${rate}px)`;
-            }
+    // movimento suave da foto em todas as telas
+    const rateImg = scrolled * -0.15; // mais discreto no mobile
+    profileImage.style.transform = `translateY(${rateImg}px)`;
 
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
+    // só move o container no desktop (evita bagunça no mobile)
+    if (window.innerWidth > 768 && hero) {
+      hero.style.transform = `translateY(${scrolled * 0.1}px)`;
+    } else if (hero) {
+      hero.style.transform = 'none';
     }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
 // Efeito de partículas no background

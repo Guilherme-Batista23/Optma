@@ -188,7 +188,7 @@ body::after {
 }
 @media (max-width: 768px) {
   .profile-image img {
-    width: 200px;
+    width: 240px;
   }
 }
 
@@ -1740,11 +1740,82 @@ img {
 
 @media (max-width: 480px) {
   .problem-section .solution-highlight img.highlight-image {
-    width: 180px !important;
+    width: 160px !important;
     height: auto !important;
     max-width: none !important;
     display: block !important;
     margin: 0 auto !important;
     padding: 0 !important;
   }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(67, 183, 201, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(67, 183, 201, 0.8); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(67, 183, 201, 0.7); }
+}
+
+/* Piscar suave só no primeiro botão */
+.hero .cta-button {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Urgency mini banner */
+.urgency-mini {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Final CTA button */
+.final-cta-section .final-cta {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.target-item p {
+  font-size: 1.2rem; /* padrão é menor, agora maior */
+  font-weight: 500;  /* deixa mais encorpado */
+  line-height: 1.5;  /* espaço entre linhas */
+  text-align: center; /* centraliza (opcional) */
+}
+
+@media (min-width: 769px) {
+  .target-item p {
+    font-size: 1.2rem;
+  }
+}
+
+.schedule-section .section-header h2 {
+  margin-bottom: 10px; /* antes era 24px */
+}
+
+/* --- Hero: aumentar a foto no mobile --- */
+@media (max-width: 768px) {
+  /* libera o wrapper que estava travando em 150x150 */
+  .profile-image {
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  /* aumenta a imagem de fato (usa !important para vencer regras anteriores) */
+  .hero .hero-image .profile-image img {
+    width: 210px !important;   /* ajuste seu gosto: 240–280px */
+    height: auto !important;
+  }
+}
+
+/* Título do formulário: deixa tudo branco por padrão */
+.form-header h2 {
+  color: #ffffff !important;
+}
+
+/* E deixa só os trechos desejados em azul */
+.form-header h2 .highlight-blue {
+  color: #43b7c9 !important;
+  font-weight: 700 !important;
+}
+
+/* Aumenta o subtítulo "Cada hora com resultado imediato" */
+.schedule-section .section-header p {
+  font-size: 1.2rem;   /* antes 1.2rem */
+  font-weight: 500;    /* deixa mais encorpado */
 }
