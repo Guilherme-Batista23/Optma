@@ -1856,3 +1856,16 @@ img {
   color: #43b7c9;
   font-size: 1rem;
 }
+
+.subtitulo-principal {
+    font-size: 1.1rem !important;  /* ou o tamanho que quiser */
+    line-height: 1.4 !important;
+    color: #b8b8b8 !important;     /* mantém o mesmo cinza */
+}
+
+@media (max-width: 480px) {
+  .subtitulo-principal {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+}
