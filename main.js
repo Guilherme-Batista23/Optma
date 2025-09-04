@@ -120,3 +120,44 @@ document.addEventListener("DOMContentLoaded", () => {
     banner.style.display = "none";
   });
 });
+
+
+// ===== Scroll suave para o formulário =====
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('a[href^="#form"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector("#form");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+  });
+
+  // ===== COOKIE BANNER =====
+document.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("cookieBanner");
+  const btn = document.getElementById("acceptCookies");
+
+  const hide = () => {
+    banner.style.display = "none";
+    document.body.classList.remove("has-cookie-banner");
+  };
+  const show = () => {
+    banner.style.display = "flex";
+    document.body.classList.add("has-cookie-banner");
+  };
+
+  if (localStorage.getItem("cookiesAccepted")) {
+    hide();
+  } else {
+    show();
+  }
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    hide();
+  });
+});
+

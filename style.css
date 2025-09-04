@@ -697,3 +697,185 @@ html, body { width:100%; overflow-x:hidden; }            /* evita rolagem latera
   font-size: 0.85rem;
   padding: 8px 14px;
 }
+
+/* ===== HERO centralizada no MOBILE (<=640px) ===== */
+@media (max-width:640px){
+  /* empilha em 1 coluna e centraliza a cópia */
+  .hero__grid{ grid-template-columns: 1fr; gap: 20px; }
+  .hero__copy{
+    text-align: center;
+    margin-inline: auto;
+    max-width: 36rem; /* só pra não ficar muito largo em telas grandes de celular */
+  }
+
+  /* título e parágrafo com largura confortável */
+  .hero__copy h1{
+    font-size: clamp(1.9rem, 7vw, 2.3rem);
+    line-height: 1.15;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__copy .lead{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36ch;          /* limita o parágrafo pra leitura melhor */
+  }
+
+  /* CTA centralizado */
+  .hero__cta{ justify-content: center; }
+
+  /* arte do celular centralizada logo abaixo */
+  .hero__art{
+    margin-inline: auto;
+    min-height: 360px;
+  }
+  .phone{ width: 86%; margin-inline: auto; }
+
+  /* cartões flutuantes bem posicionados no mobile */
+  .hero__art .kpi{ top: 7%; right: 10%; }
+  .hero__art .book{ bottom: 8%; left: 10%; }
+  .hero__art .chat{ padding-top: 112px; } /* espaço pro 24/7 não encavalar */
+}
+
+/* telas muito pequenas */
+@media (max-width:380px){
+  .phone{ width: 92%; }
+  .hero__art .kpi{ top: 8%; right: 8%; }
+  .hero__art .book{ bottom: 8%; left: 8%; }
+  .hero__art .chat{ padding-top: 120px; }
+}
+
+/* Impede que "na hora" quebre em 2 linhas */
+.nowrap {
+  white-space: nowrap;
+}
+/* utilitário */
+.nowrap{ white-space: nowrap; }
+
+/* ===== Harmonização do bloco de contato no mobile ===== */
+@media (max-width:640px){
+  /* centraliza e limita largura confortável do título e subtítulo */
+  .contact .contact__copy{
+    text-align:center;
+    margin-inline:auto;
+    max-width: 32rem;
+  }
+  .contact .contact__copy h2{
+    font-size: clamp(1.6rem, 6.5vw, 2rem);
+    line-height: 1.15;
+    margin: 0 auto 8px;
+    text-wrap: balance;     /* navegadores modernos equilibram as quebras */
+  }
+  .contact .contact__copy .muted{
+    max-width: 36ch;        /* linha mais curta = leitura melhor */
+    margin: 0 auto 14px;
+  }
+
+  /* formulário centralizado e respirando */
+  .contact .form{
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 16px;
+    gap: 14px;
+  }
+  .contact .form__row{
+    gap: 8px;
+  }
+  .contact .form input,
+  .contact .form textarea{
+    font-size: 1rem;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  /* checkbox com alinhamento bonito e área de clique maior */
+  .contact .form__agree{
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .contact .form__agree input[type="checkbox"]{
+    width: 20px; height: 20px; margin-top: 2px;
+  }
+  .contact .form__agree label{
+    line-height: 1.35;
+    max-width: 40ch;
+  }
+
+  /* CTA do formulário centralizado */
+  .contact .form button{
+    width: 100%;
+    max-width: 360px;
+    margin: 6px auto 0;
+  }
+}
+
+/* ===== Footer mobile ===== */
+@media (max-width:640px){
+  .site-footer{
+    padding: 24px 0 28px;
+  }
+  .footer__grid{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .footer__logo{ height: 44px; }
+  .footer__brand p{
+    margin: 6px 0 0;
+    font-size: .85rem;
+    color: #cfd6ea;
+  }
+
+  .footer__contact h4{
+    margin: 0 0 6px;
+    font-size: .95rem;
+  }
+  .footer__contact p{
+    margin: 2px 0;
+    font-size: .9rem;
+  }
+  .footer__contact a{
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+}
+
+/* ===== Cookie banner responsivo ===== */
+.cookie-banner{
+  padding: 14px 16px;
+  gap: 12px;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+}
+@media (max-width:640px){
+  .cookie-banner{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cookie-banner p{ font-size: .85rem; }
+  .cookie-banner button{
+    width: 100%;
+    padding: 10px 14px;
+  }
+}
+
+/* Dá espaço no rodapé quando o banner está visível (só mobile) */
+@media (max-width:640px){
+  body.has-cookie-banner{ padding-bottom: 80px; }
+}
+
+/* Centralizar logo no footer */
+.site-footer .footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.site-footer .footer__logo {
+  display: block;
+  margin: 0 auto 8px;
+}
