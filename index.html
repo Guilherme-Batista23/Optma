@@ -1,383 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshop Diagnóstico 360º | Fernanda Fritz</title>
-    <link rel="stylesheet" href="styles-updated.css">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPTMA IA</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-          <div class="overlay">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="IMG_1195.PNG" alt="Diagnóstico 360" class="header-logo">
-                    <span>Workshop Diagnóstico 360º</span>
-                    <span class="edition">Edição Especial</span>
-                </div>
-                <div class="event-info">
-                    <span class="calendar-icon">📅</span>
-                    <span>4 horas de imersão | AO VIVO</span>
-                </div>
-                </div>
-            </div>
-        </div>
-    </header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="src/optma ia logo.png" alt="Optma.IA" class="brand-logo"/>
+      </a>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-flex-wrapper">
-                <div class="hero-text fade-in-up">
-                    <h1> <span class="highlight-blue">O mapa do lucro da sua clínica — em 4 horas, passo a passo.</span></h1>
-                    <p class="subtitulo-principal">Operação Enxuta + 2 Protocolos Fast-Track + Mini-funil local. Ao vivo com Fernanda Fritz, criadora do Método Detox 14 Dias. <span class="highlight-blue">Só 100 vagas</span> · Gravação 7 dias · R$197 vira crédito na Mentoria.</p>
-                    <div class="price-highlight">
-                        <span class="price">R$ 67</span>
-                        <span class="credit-info">100% em crédito na Mentoria Império Fritz™</span>
-                    </div>
-                    <button class="cta-button" onclick="scrollToForm()">
-                        Quero garantir minha vaga
-                    </button>
-                </div>
-                <div class="hero-image fade-in-right">
-                    <div class="profile-image">
-                        <img src="Fernanda1.jpg" alt="Fernanda Fritz">
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="container">
-            <div class="problem-content fade-in-up">
-                <h2>Agenda cheia ≠ lucro</h2>
-                <p>Se o caixa não fecha, há gargalos na operação, nos protocolos oferecidos e na forma de atrair pacientes.</p>
-                <div class="solution-highlight">
-                    <img src="IMGLOGO.png" alt="Diagnóstico 360" class="highlight-image">
-                    <span>O <span class="highlight-blue">Diagnóstico 360º</span> revela esses pontos cegos e entrega o passo-a-passo para corrigi-los em <span class="highlight-blue">apenas 4 horas</span>.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What You\'ll Get Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2>O que você vai levar</h2>
-                <p>Conteúdo prático para transformar sua clínica</p>
-            </div>
-            
-            <div class="content-grid">
-                <div class="content-card fade-in-up">
-                    <div class="card-icon">⚙️</div>
-                    <h3>Operação Enxuta & Gestão de Equipe</h3>
-                    <ul>
-                        <li>Como estruturar uma clínica leve, sem sobrecarga</li>
-                        <li>Processos diários simples que liberam sua agenda</li>
-                        <li>Treinamento de equipe focado em metas e resultados</li>
-                        <li>Checklist da Clínica Lucrativa: da agenda ao faturamento</li>
-                    </ul>
-                </div>
-                
-                <div class="content-card fade-in-up">
-                    <div class="card-icon">⚡</div>
-                    <h3>2 Protocolos Fast-Track</h3>
-                    <p>Detox Metabólico + Redução de Medidas prontos para vender em 48h</p>
-                </div>
-                
-                <div class="content-card fade-in-up">
-                    <div class="card-icon">📈</div>
-                    <h3>Mini-Funil de Captação Express</h3>
-                    <p>7 posts + 3 stories + anúncio local (R$ 20/dia)</p>
-                </div>
-                
-                <div class="content-card fade-in-up">
-                    <div class="card-icon">💰</div>
-                    <h3>Crédito Integral</h3>
-                    <p>R$ 67 viram desconto total na Mentoria Império Fritz™</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="schedule-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2>Agenda das 4 Horas</h2>
-                <p>Cada hora com resultado imediato</p>
-            </div>
-            
-            <div class="schedule-timeline">
-                <div class="timeline-item fade-in-left">
-                    <div class="timeline-hour">1 a 2hr</div>
-                    <div class="timeline-content">
-                        <h3>Operação Enxuta & Gestão de Equipe</h3>
-                        <p>Processo diário + checklist prontos para aplicar na segunda.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item fade-in-right">
-                    <div class="timeline-hour">3hr</div>
-                    <div class="timeline-content">
-                        <h3>Protocolos Fast-Track</h3>
-                        <p>Novo ticket alto configurado em 48h.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item fade-in-left">
-                    <div class="timeline-hour">4hr</div>
-                    <div class="timeline-content">
-                        <h3>Mini-Funil de Pacientes</h3>
-                        <p>Agenda preenchida em 7 dias com leads locais.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recording-info fade-in-up">
-                <span class="recording-icon">📹</span>
-                <span>Gravação disponível por 7 dias na Hubla</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Audience Section -->
-    <section class="target-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2 >Para quem é este workshop</h2>
-            </div>
-            
-            <div class="target-grid">
-                <div class="target-item fade-in-up">
-                    <div class="target-icon"></div>
-                    <p>Donas de clínicas em cidades <br>pequenas ou médias</p>
-                </div>
-                
-                <div class="target-item fade-in-up">
-                    <div class="target-icon"></div>
-                    <p>Faturamento atual maior que <br>R$ 20.000/mês</p>
-                </div>
-                
-                <div class="target-item fade-in-up">
-                    <div class="target-icon"></div>
-                    <p>Depende demais de serviços baratos e da própria mão</p>
-                </div>
-                
-                <div class="target-item fade-in-up">
-                    <div class="target-icon"></div>
-                    <p>Busca lucro previsível, equipe autônoma e qualidade de vida</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image fade-in-left">
-                    <img src="Fernanda3.jpg" alt="Fernanda Fritz">
-                </div>
-                
-                <div class="about-text fade-in-right">
-                    <h2>Fernanda Fritz</h2>
-                    <h3>Mentora de Clínica de Estética e Saúde</h3>
-                    <ul class="about-achievements">
-                        <li>10 anos entre sala de atendimento e gestão enxuta</li>
-                        <li>Multiplicou lucro mantendo apenas 2 funcionárias</li>
-                        <li>Criadora do Método Detox 14 Dias — lucratividade e engajamento comprovados</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offer Section -->
-    <section class="offer-section">
-        <div class="container">
-            <div class="offer-content fade-in-up">
-                <div class="offer-header">
-                    <h2>Oferta & Garantia</h2>
-                    <div class="price-box">
-                        <span class="price-label">Investimento:</span>
-                        <span class="price-value">R$ 67</span>
-                    </div>
-                </div>
-                
-                <div class="offer-benefits">
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span>Crédito total na Mentoria Império Fritz™</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span>Material para download imediato na Hubla</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span>Garantia dupla de 7 dias</span>
-                    </div>
-                </div>
-                
-                <div class="guarantee-details">
-                    <div class="guarantee-item">
-                        <h4>Satisfação:</h4>
-                        <p>Desistiu? Avise em até 7 dias e devolvemos 100%.</p>
-                    </div>
-                    <div class="guarantee-item">
-                        <h4>Aplicação:</h4>
-                        <p>Aplique todo o conteúdo, prove que não teve resultado e devolvemos o valor do ingresso.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Urgency Mini Banner -->
-<div class="urgency-mini fade-in-up">
-  <span class="urgency-text">Somente 100 vagas ao vivo</span>
-</div>
-
-
-
-    <!-- Registration Form Section -->
-    <section class="form-section" id="registration-form">
-        <div class="container">
-            <div class="form-content fade-in-up">
-                <div class="form-header">
-                    <h2>
-  Sim, quero meu <span class="highlight-blue">Diagnóstico 360º</span> e o crédito de 
-  <span class="highlight-blue">R$67</span>
-</h2>
-
-                    <div class="form-benefits">
-                        <span>4h de imersão operacional + Protocolos + Funil</span>
-                        <span>Gravação 7 dias • Garantia dupla • Só 100 vagas</span>
-                    </div>
-                </div>
-                
-                <form class="registration-form" id="checkoutForm">
-                    <div class="form-group">
-                        <label for="name">Nome completo *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Telefone/WhatsApp *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <button type="submit" class="checkout-button">
-                        <span class="button-icon">💳</span>
-                        Finalizar Inscrição
-                    </button>
-                    
-                    <div class="security-badges">
-                        <span class="security-item">🔒 Pagamento 100% seguro</span>
-                        <span class="security-item">✅ Garantia de 7 dias</span>
-                        <span class="security-item">⚡ Acesso imediato</span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2>Perguntas Frequentes</h2>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item fade-in-up">
-                    <div class="faq-question">
-                        <span>Meu público não paga protocolo caro.</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Mostramos como ancorar valor clínico e parcelar sem guerra de preços.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in-up">
-                    <div class="faq-question">
-                        <span>Já investi em equipamentos, não quero gastar mais.</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Primeiro monetizamos o que você já tem antes de comprar qualquer novidade.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in-up">
-                    <div class="faq-question">
-                        <span>E se eu não puder assistir ao vivo?</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>A gravação fica liberada por 7 dias e você recebe o material completo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-<section class="testimonials-section">
-  <div class="container">
-    <div class="section-header fade-in-up">
-      <h2>O que dizem sobre o Diagnóstico 360º</h2>
+      <a href="#form" class="btn btn-primary btn--pulse">Eu quero um Agente de IA</a>
+      </a>
     </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in-up">
-        <p class="testimonial-text">
-          "Ei Fe, a mentoria veio no momento certo na história da Modellai. 
-          Com ela, em menos de 30 dias, me tornei uma profissional mais madura e resiliente diante dos desafios do meu negócio. 
-          Hoje vejo com os olhos de dona e líder, o que impactou demais na criação do meu novo time comercial e na forma de delegar. 
-          Isso me inspirou a vir trabalhar mais feliz e disposta! Antes muito sobrecarregada por fazer tudo sozinha, 
-          e agora leve por saber o meu verdadeiro papel dentro da minha clínica, fazendo os processos acontecerem com mais fluidez.
-          Gratidão enorme pela sua vida e pela sua dedicação em me mentorar!"
+  </header>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <!-- Coluna 1: texto -->
+      <div class="hero__copy">
+        <h1>
+          Agente de IA que <span class="highlight">poupa seu tempo</span> e responde <span class="highlight">na hora</span>
+        </h1>
+        <p class="lead">
+          Atendimento <strong>24 horas, 7 dias por semana</strong>, respostas consistentes,
+          captação de dados e <strong>pré-agendamentos</strong> automáticos no seu WhatsApp.
         </p>
-        <span class="testimonial-name">— Laise Prates</span>
+
+        <div class="hero__cta">
+           <a href="#form" class="btn btn-primary btn--pulse">Eu quero um Agente de IA</a>
+        </div>
+</div>
+      <!-- Coluna 2: ARTE (celular + cards) -->
+      <div class="hero__art" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="chat">
+            <div class="msg msg--client">
+              Oi! Vocês atendem amanhã?
+              <span class="time">09:12</span>
+            </div>
+            <div class="msg msg--ai">
+              Oi! Atendemos sim 😊 Posso <strong>pré-agendar</strong> para você.
+              <span class="time">09:12</span>
+            </div>
+            <div class="msg msg--client">
+              Pode ser às 15h?
+              <span class="time">09:13</span>
+            </div>
+            <div class="msg msg--ai">
+              Perfeito! <strong>15:00</strong> pré-agendado. Eu te aviso quando confirmar.
+              <span class="time">09:13</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-card kpi">
+          <div class="kpi__big">24/7</div>
+          <div class="kpi__sub">Atendimento contínuo</div>
+        </div>
+
+        <div class="floating-card book">
+          <div class="book__title">Pré-agendado</div>
+          <div class="book__row">
+            <span>Hoje</span><span>15:00</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" class="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Por que um Agente de IA da <span class="highlight">Optma.IA</span>?</h2>
+        <p class="muted">Automação sem perder o toque humano.</p>
+      </div>
+
+      <div class="features__grid">
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">🕒</div>
+          <h3>Atende 24/7</h3>
+          <p>Seu cliente é <span class="highlight">respondido em segundos</span> — madrugada, fim de semana, feriado.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">⚙️</div>
+          <h3>Poupa seu tempo</h3>
+          <p>Centraliza dúvidas frequentes, qualifica e envia para a pessoa certa <span class="highlight">só o que importa.</span></p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">📅</div>
+          <h3>Pré-agendamento</h3>
+          <p>Coleta dados, sugere horários e <span class="highlight">deixa tudo pronto</span> para confirmar no seu sistema.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">🤖</div>
+          <h3>É um agente, e não um Chatbot</h3>
+          <p>Respostas humanizadas e não robotícas como de um chatbot, seu cliente no vácuo <span class="highlight">nunca mais.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section class="partners">
+    <div class="container">
+      <div class="section-head">
+        <h2>Marcas que confiam</h2>
+        <p class="muted">Alguns clientes e parceiros que já fecharam conosco.</p>
+      </div>
+
+<div class="partners__grid">
+  <div class="partner partner--big">
+    <img src="src/tiger logo.png" alt="Tiger Company">
+    <span class="partner__name">Tiger Company</span>
   </div>
-</section>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta-section">
-        <div class="container">
-            <div class="final-cta-content fade-in-up">
-                <h2>Últimas vagas disponíveis!</h2>
-                <p>Não perca a oportunidade de transformar sua clínica em apenas 4 horas</p>
-                <button class="cta-button final-cta" onclick="scrollToForm()">
-                    Garantir minha vaga agora
-                </button>
-                <div class="final-urgency">
-                    <span> Vagas limitadas • Acesso imediato • Garantia total</span>
-                </div>
-            </div>
+  <div class="partner">
+    <img src="partner2.png" alt="Estética Fritz">
+    <span class="partner__name">Estética Fritz</span>
+  </div>
+</div>
+
+  <!-- FORMULÁRIO -->
+  <section id="form" class="contact">
+    <div class="container contact__grid">
+      <div class="contact__copy">
+        <h2>Pronto para  <span class="highlight">elevar  o atendimento </span>da sua empresa?</h2>
+        <p class="muted">Preencha e a gente retorna com uma proposta sob medida.</p>
+      </div>
+
+      <form class="form" action="#" method="post" novalidate>
+        <div class="form__row">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" required />
         </div>
-    </footer>
 
+        <div class="form__row">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
 
-    <script src="script-updated.js"></script>
+        <div class="form__row">
+          <label for="whats">WhatsApp</label>
+          <input id="whats" name="whatsapp" type="tel" inputmode="tel" placeholder="(xx) xxxxx-xxxx" required />
+        </div>
+
+        <div class="form__row">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" name="empresa" type="text" autocomplete="organization" />
+        </div>
+
+        <div class="form__agree">
+          <input id="lgpd" type="checkbox" required />
+          <label for="lgpd">Concordo em receber contato da Optma.IA.</label>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Quero meu Agente de IA</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+    <script src="main.js"></script>
+    <footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="src/optma ia logo.png" alt="Optma.IA" class="footer__logo" />
+      <p>© 2024 Optma.IA – Todos os direitos reservados.</p>
+    </div>
+
+    <div class="footer__contact">
+      <h4>Contato</h4>
+      <p>Email: <a href="mailto:contato@optmaia.com">optmaia.contato@gmail.com</a></p>
+      <p>WhatsApp: <a href="https://wa.me/5511999999999" target="_blank">(16) 99999-9999</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>
+    Usamos cookies para melhorar sua experiência. 
+    <a href="#">Saiba mais</a>.
+  </p>
+  <button id="acceptCookies" class="btn btn-primary">Aceitar</button>
+</div>
 </body>
 </html>
-
