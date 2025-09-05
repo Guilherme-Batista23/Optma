@@ -161,3 +161,110 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ===== Carrossel de chats (clínica / petshop) =====
+(function(){
+  const art   = document.querySelector('.hero__art');
+  if(!art) return;
+
+  const scenes = Array.from(art.querySelectorAll('.chat-scene'));
+  const badge  = art.querySelector('#segmentBadge');
+  const btnPrev = art.querySelector('.slider-btn.prev');
+  const btnNext = art.querySelector('.slider-btn.next');
+  if(!scenes.length || !badge) return;
+
+  let i = scenes.findIndex(s => s.classList.contains('is-active'));
+  if(i < 0) i = 0;
+
+  const show = (idx)=>{
+    scenes.forEach((s, k)=> s.classList.toggle('is-active', k === idx));
+    const seg = scenes[idx].getAttribute('data-segment') || '';
+    badge.textContent = seg;
+    i = idx;
+  };
+
+  const next = ()=> show((i + 1) % scenes.length);
+  const prev = ()=> show((i - 1 + scenes.length) % scenes.length);
+
+  btnNext && btnNext.addEventListener('click', next);
+  btnPrev && btnPrev.addEventListener('click', prev);
+
+  // Auto-troca a cada 8s; pausa ao passar o mouse no desktop
+  let timer = setInterval(next, 8000);
+  const pause = ()=> { clearInterval(timer); timer = null; };
+  const resume = ()=> { if(!timer) timer = setInterval(next, 8000); };
+
+  art.addEventListener('mouseenter', pause);
+  art.addEventListener('mouseleave', resume);
+  // acessibilidade: pause quando focar os botões
+  [btnPrev, btnNext].forEach(b => b && b.addEventListener('focus', pause));
+  [btnPrev, btnNext].forEach(b => b && b.addEventListener('blur', resume));
+})();
+
+// ===== Carrossel de chats (clínica / petshop) =====
+(function(){
+  const art = document.querySelector('.hero__art');
+  if(!art) return;
+
+  const scenes  = Array.from(art.querySelectorAll('.chat-scene'));
+  const badge   = art.querySelector('#segmentBadge');
+  const btnPrev = art.querySelector('.slider-btn.prev');
+  const btnNext = art.querySelector('.slider-btn.next');
+  if(!scenes.length || !badge) return;
+
+  let i = scenes.findIndex(s => s.classList.contains('is-active'));
+  if(i < 0) i = 0;
+
+   function show(idx){
+    scenes.forEach((s,k)=> s.classList.toggle('is-active', k === idx));
+    const seg = scenes[idx].getAttribute('data-segment') || '';
+    badge.textContent = seg;
+    i = idx;
+
+    // atualiza título da topbar
+    const topbarTitle = art.querySelector('.chat-topbar__title');
+    if (topbarTitle) {
+      const segNorm = seg.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      if (segNorm.includes('clinica')) {
+        topbarTitle.textContent = 'Sua Clínica';
+      } else if (segNorm.includes('petshop')) {
+        topbarTitle.textContent = 'Seu Petshop';
+      } else {
+        topbarTitle.textContent = 'Atendimento Optma';
+      }
+    }
+  }
+
+  const next = ()=> show((i + 1) % scenes.length);
+  const prev = ()=> show((i - 1 + scenes.length) % scenes.length);
+
+  btnNext && btnNext.addEventListener('click', next);
+  btnPrev && btnPrev.addEventListener('click', prev);
+    // Swipe no mobile (arrastar para trocar)
+  let x0 = null;
+  art.addEventListener('touchstart', (e) => {
+    if(!e.touches.length) return;
+    x0 = e.touches[0].clientX;
+    pause();   // pausa auto-rotate enquanto arrasta
+  }, { passive: true });
+
+  art.addEventListener('touchend', (e) => {
+    if(x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    const THRESHOLD = 40;  // px mínimos para considerar swipe
+    if (Math.abs(dx) > THRESHOLD) {
+      dx < 0 ? next() : prev();
+    }
+    x0 = null;
+    resume(); // retoma auto-rotate
+  }, { passive: true });
+
+  // auto-troca a cada 8s; pausa no hover/focus (desktop)
+  let timer = setInterval(next, 8000);
+  const pause  = ()=> { if(timer){ clearInterval(timer); timer = null; } };
+  const resume = ()=> { if(!timer){ timer = setInterval(next, 8000); } };
+
+  art.addEventListener('mouseenter', pause);
+  art.addEventListener('mouseleave', resume);
+  [btnPrev, btnNext].forEach(b => b && b.addEventListener('focus', pause));
+  [btnPrev, btnNext].forEach(b => b && b.addEventListener('blur', resume));
+})();

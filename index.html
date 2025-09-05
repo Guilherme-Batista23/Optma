@@ -12,9 +12,7 @@
       <a class="brand" href="#">
         <img src="src/optma ia logo.png" alt="Optma.IA" class="brand-logo"/>
       </a>
-
-  <a href="#form" class="btn btn-primary cta">Eu quero um Agente de IA</a>
-      </a>
+  <a href="#form" class="btn btn-primary cta">Eu quero um Agente de I.A</a>
     </div>
   </header>
 <main>
@@ -24,7 +22,7 @@
       <!-- Coluna 1: texto -->
       <div class="hero__copy">
        <h1>
-  Agente de IA que <span class="highlight">poupa seu tempo</span> e responde <span class="highlight nowrap">na hora</span>
+  Agente de I.A que <span class="highlight">poupa seu tempo</span> e responde <span class="highlight nowrap">na hora</span>
 </h1>
         <p class="lead">
           Atendimento <strong>24 horas, 7 dias por semana</strong>, respostas consistentes,
@@ -32,44 +30,88 @@
         </p>
 
        <div class="hero__cta">
-  <a href="#form" class="btn btn-primary btn--pulse">Eu quero um Agente de IA</a>
+  <a href="#form" class="btn btn-primary btn--pulse">Eu quero um Agente de I.A</a>
 </div>
 </div>
       <!-- Coluna 2: ARTE (celular + cards) -->
       <div class="hero__art" aria-hidden="true">
         <div class="phone">
           <div class="phone__notch"></div>
-          <div class="chat">
-            <div class="msg msg--client">
-              Oi! Vocês atendem amanhã?
-              <span class="time">09:12</span>
-            </div>
-            <div class="msg msg--ai">
-              Oi! Atendemos sim 😊 Posso <strong>pré-agendar</strong> para você.
-              <span class="time">09:12</span>
-            </div>
-            <div class="msg msg--client">
-              Pode ser às 15h?
-              <span class="time">09:13</span>
-            </div>
-            <div class="msg msg--ai">
-              Perfeito! <strong>15:00</strong> pré-agendado. Eu te aviso quando confirmar.
-              <span class="time">09:13</span>
-            </div>
-          </div>
-        </div>
+          <!-- Topbar estilo WhatsApp -->
+<div class="chat-topbar">
+<div class="chat-topbar__avatar">
+  <img src="src/Prancheta 1_7.png" alt="Optma IA" />
+</div>
+  <div class="chat-topbar__meta">
+    <div class="chat-topbar__title">Sua Clínica</div>
+    <div class="chat-topbar__sub">online • WhatsApp</div>
+  </div>
+  <div class="chat-topbar__icons">⋯</div>
+</div>
+          <div class="segment-badge" id="segmentBadge">Perfeito para sua clínica</div>
 
-        <div class="floating-card kpi">
-          <div class="kpi__big">24/7</div>
-          <div class="kpi__sub">Atendimento contínuo</div>
-        </div>
+          
 
-        <div class="floating-card book">
-          <div class="book__title">Pré-agendado</div>
-          <div class="book__row">
-            <span>Hoje</span><span>15:00</span>
-          </div>
-        </div>
+<!-- Slider de cenas dentro do celular -->
+<div class="chat-slider">
+
+  <!-- CENA 1: CLÍNICA (ativa no load) -->
+  <div class="chat-scene is-active" data-segment="Perfeito para sua clinica">
+    <div class="chat">
+      <div class="msg msg--client">
+        Oi! Vocês têm consulta amanhã?
+        <span class="time">09:12</span>
+      </div>
+      <div class="msg msg--ai">
+        Oi! Temos sim 😊 Posso <strong>pré-agendar</strong> seu horário?
+        <span class="time">09:12</span>
+          <span class="ticks">✓✓</span>
+      </div>
+      <div class="msg msg--client">
+        Pode ser às 15h?
+        <span class="time">09:13</span>
+      </div>
+      <div class="msg msg--ai">
+        Perfeito! <strong>15:00</strong> pré-agendado. Te aviso quando confirmar. 🩺
+        <span class="time">09:13</span>
+          <span class="ticks">✓✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENA 2: PETSHOP -->
+  <div class="chat-scene" data-segment="Perfeito para seu petshop">
+    <div class="chat">
+      <div class="msg msg--client">
+        Oi! Tem banho e tosa hoje?
+        <span class="time">10:02</span>
+      </div>
+      <div class="msg msg--ai">
+        Tem sim! Posso <strong>pré-agendar</strong> pra você!! qual o nome do seu pet? ✨
+        <span class="time">10:02</span>
+          <span class="ticks">✓✓</span>
+      </div>
+      <div class="msg msg--client">
+       Ele se chama Fred
+        <span class="time">10:03</span>
+      </div>
+      <div class="msg msg--ai">
+        Opa! temos agenda para o banho e tosa do <strong>Fred 🐶</strong> as 15:00 e 16:30, qual horario prefere?? 🐾
+        <span class="time">10:03</span>
+          <span class="ticks">✓✓</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Controles (visíveis no desktop) -->
+<div class="slider-controls" aria-label="Trocar segmento">
+  <button class="slider-btn prev" type="button" aria-label="Anterior">‹</button>
+  <button class="slider-btn next" type="button" aria-label="Próximo">›</button>
+</div>   <!-- fecha .slider-controls -->
+</div>   <!-- fecha .phone -->
+
       </div>
     </div>
   </section>
@@ -78,11 +120,18 @@
   <section id="beneficios" class="features">
     <div class="container">
       <div class="section-head">
-        <h2>Por que um Agente de IA da <span class="highlight">Optma.IA</span>?</h2>
+        <h2>Por que um Agente de I.A da <span class="highlight">Optma.IA</span>?</h2>
         <p class="muted">Automação sem perder o toque humano.</p>
       </div>
 
       <div class="features__grid">
+
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">🤖</div>
+          <h3>É um agente, e não um Chatbot</h3>
+          <p>Respostas humanizadas e não robotícas como de um chatbot, seu cliente no vácuo <span class="highlight">nunca mais.</span></p>
+        </article>
+
         <article class="card">
           <div class="card__icon" aria-hidden="true">🕒</div>
           <h3>Atende 24/7</h3>
@@ -101,11 +150,7 @@
           <p>Coleta dados, sugere horários e <span class="highlight">deixa tudo pronto</span> para confirmar no seu sistema.</p>
         </article>
 
-        <article class="card">
-          <div class="card__icon" aria-hidden="true">🤖</div>
-          <h3>É um agente, e não um Chatbot</h3>
-          <p>Respostas humanizadas e não robotícas como de um chatbot, seu cliente no vácuo <span class="highlight">nunca mais.</span></p>
-        </article>
+
       </div>
     </div>
   </section>
@@ -119,15 +164,15 @@
       </div>
 
 <div class="partners__grid">
-  <div class="partner partner--big">
+  <figure class="partner">
     <img src="src/tiger logo.png" alt="Tiger Company">
-    <span class="partner__name">Tiger Company</span>
-  </div>
+    <figcaption>Tiger Company</figcaption>
+  </figure>
 
-  <div class="partner">
-    <img src="partner2.png" alt="Estética Fritz">
-    <span class="partner__name">Estética Fritz</span>
-  </div>
+  <figure class="partner">
+    <img src="src/logo_transparente.png" alt="Estética Fritz">
+    <figcaption>Estética Fritz</figcaption>
+  </figure>
 </div>
 
   <!-- FORMULÁRIO -->
@@ -166,7 +211,7 @@
           <label for="lgpd">Concordo em receber contato da Optma.IA.</label>
         </div>
 
-        <button class="btn btn-primary" type="submit">Quero meu Agente de IA</button>
+        <button class="btn btn-primary" type="submit">Quero meu Agente de I.A</button>
       </form>
     </div>
   </section>

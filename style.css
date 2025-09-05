@@ -85,6 +85,7 @@ body{
   align-items:center;
 }
 
+
 .hero__copy h1{
   font-size: clamp(2rem, 4.2vw, 3.4rem);
   line-height:1.1;
@@ -443,22 +444,6 @@ html { scroll-behavior: smooth; }
   color: #cfd6ea;
   opacity: .85;
 }
-
-/* ==== Partners – garantir tamanho padrão maior ==== */
-.partners .partners__grid .partner > img {
-  max-height: 96px !important;   /* padrão maior */
-  width: auto;
-  height: auto;
-  transform: none;
-}
-
-/* opcional: destaque de um parceiro específico */
-.partners .partners__grid .partner.partner--big > img {
-  max-height: 140px !important;
-}
-
-.partner--big { gap: 4px; } /* diminui só no Tiger */
-.partner--big > img { max-height: 140px !important; } /* Tiger maior */
 
 /* ===== PARTNERS – OVERRIDES FINAIS (não apaga nada acima) ===== */
 .partners .partners__grid{
@@ -878,4 +863,515 @@ html, body { width:100%; overflow-x:hidden; }            /* evita rolagem latera
 .site-footer .footer__logo {
   display: block;
   margin: 0 auto 8px;
+}
+
+/* ===== Chat slider (dentro do celular) ===== */
+.chat-slider { position: relative; }
+.chat-scene { display: none; }
+.chat-scene.is-active { display: block; } /* mostra só a cena ativa */
+
+/* Badge "Perfeito para sua clínica/petshop" */
+.segment-badge{
+  position:absolute;
+  top: -10px; right: -6px;
+  transform: translateY(-60%);
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(6px) saturate(120%);
+  padding:8px 12px;
+  border-radius: 999px;
+  font-size:.85rem; font-weight:700;
+  color:#e9edf7;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  white-space: nowrap;
+}
+
+.hero__art { position: relative; } /* garante posicionamento do badge */
+
+/* Controles (desktop) */
+.slider-controls{
+  position:absolute;
+  right: 10px;
+  bottom: 10px;
+  display:flex; gap:8px;
+}
+.slider-btn{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:#fff;
+  width:36px; height:36px;
+  border-radius:10px;
+  font-size:20px; line-height:1;
+  cursor:pointer;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+}
+.slider-btn:hover{ transform: translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,.3); }
+.slider-btn:active{ transform:none; }
+
+/* Esconde controles no mobile */
+@media (max-width: 1024px){
+  .slider-controls{ display:none; }
+}
+
+/* Mostrar setas no mobile e ajustar tamanho/posição para toque */
+@media (max-width: 1024px){
+  .slider-controls{
+    display: flex;          /* antes estava display:none */
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    gap: 6px;
+    z-index: 3;             /* garante que fique acima do chat */
+  }
+  .slider-btn{
+    width: 44px;            /* área de toque confortável (~44px) */
+    height: 44px;
+    font-size: 22px;
+    border-radius: 12px;
+  }
+}
+
+/* Desktop: afasta o 24/7 do balão */
+@media (min-width: 1025px){
+  .kpi{
+    top: 5%;
+    right: -2%;   /* empurra um pouco pra fora do celular */
+  }
+}
+
+/* ===== Topbar WhatsApp-like ===== */
+.chat-topbar{
+  position: absolute;
+  top: 10px; left: 12px; right: 12px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+}
+.chat-topbar__avatar{
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(180deg,#5a75ff,var(--primary));
+  box-shadow: 0 4px 14px rgba(81,108,243,.35);
+}
+.chat-topbar__avatar::after{
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px; height: 8px;
+  background: #25D366; /* verde WhatsApp */
+  border: 2px solid #0e1422; /* borda pra destacar */
+  border-radius: 50%;
+}
+.chat-topbar__title{ font-weight: 800; line-height: 1; }
+.chat-topbar__sub{ font-size: .78rem; opacity: .8; }
+.chat-topbar__icons{ font-size: 20px; opacity: .7; }
+
+/* dá mais espaço no topo para não encostar no 24/7/topbar */
+@media (min-width: 1025px){
+  .phone .chat{ padding-top: 94px; }  /* era 64px */
+}
+
+.chat-topbar__avatar{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e1422; /* fundo caso o logo seja transparente */
+}
+.chat-topbar__avatar img{
+  width: 150%;     /* aumenta pra dar zoom */
+  height: 150%;
+  object-fit: cover;   /* cobre toda a bolinha */
+}
+
+.msg{
+  border-radius: 18px;
+  padding: 8px 12px;
+  margin: 4px 0;
+  max-width: 75%;
+}
+.msg--client{
+  background: #202c33; /* cinza escuro Whats */
+  color: #e9edf7;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.msg--ai{
+  background: #005c4b; /* verde Whats */
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.msg .ticks{
+  font-size: 0.7rem;
+  margin-left: 6px;
+  color: #8696a0; /* cinza */
+}
+.msg--ai .ticks.seen{ color: #53bdeb; } /* azul quando lido */
+
+.msg .time{
+  display: block;
+  text-align: right;
+  font-size: .7rem;
+  opacity: .65;
+  margin-top: 2px;
+}
+
+.msg{
+  position: relative;
+  border-radius: 18px;
+  padding: 8px 12px 16px; /* espaço extra embaixo pro horário */
+  margin: 4px 0;
+  max-width: 75%;
+}
+
+/* horário e ticks dentro do balão, canto inferior direito */
+.msg .time,
+.msg .ticks{
+  position: absolute;
+  bottom: 4px;
+  font-size: .7rem;
+  opacity: .7;
+}
+
+.msg .time{
+  right: 6px;
+}
+
+.msg .ticks{
+  right: 34px;  /* fica logo antes do horário */
+  font-size: .75rem;
+  color: #8696a0;
+}
+
+.msg--ai .ticks.seen{
+  color: #53bdeb; /* azul de mensagem lida */
+}
+
+
+/* As seções passam a ser o “referencial” das decorações */
+.hero, .features, .partners, .contact {
+  position: relative;
+  z-index: 1;
+}
+
+/* LOGO suave desfocado apenas na HERO, rolando junto */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background: url("src/logo-degrade.png") no-repeat left -10% top -14%;
+  background-size: min(420px, 40vw);
+  opacity:.05;            /* bem discreto */
+  filter: blur(12px);
+  /* desbota as bordas pra não “gritar” no título */
+  -webkit-mask-image: radial-gradient(120% 80% at 0% 0%, #000 55%, transparent 80%);
+  mask-image: radial-gradient(120% 80% at 0% 0%, #000 55%, transparent 80%);
+}
+
+/* Circuitos grandes no lado direito da seção, escalando com a altura */
+.partners{ position: relative; }
+
+.partners::after{
+  content:"";
+  position:absolute;
+  top:0;            /* ocupa a seção toda */
+  bottom:0;
+  right:0;
+  width: min(820px, 48vw);     /* largura máxima, mas responsiva */
+  background: url("src/ELEMENTOS.png") no-repeat right center;
+  background-size: 92% auto;   /* escala pela altura (mantém proporção) */
+  opacity: .07;                /* discreto */
+  filter: blur(0.8px);
+  pointer-events: none;
+  z-index: -1;                 /* atrás do conteúdo da seção */
+}
+
+/* telas bem largas → pode aumentar um pouco */
+@media (min-width: 1440px){
+  .partners::after{
+    width: 900px;
+    background-size: 100% auto;
+  }
+}
+
+/* tablet */
+@media (max-width: 1024px){
+  .partners::after{
+    width: 56vw;
+    opacity: .06;
+  }
+}
+
+/* celular */
+@media (max-width: 640px){
+  .partners::after{
+    width: 68vw;
+    opacity: .05;
+    background-position: 110% center; /* joga um pouco mais pra fora pra não poluir */
+  }
+}
+
+/* Circuitos no topo (hero) */
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width: min(900px, 65vw);    /* aumenta/diminui aqui o tamanho */
+  height: 100%;
+  background: url("src/ELEMENTOS_transparente.png") no-repeat left top;
+  background-size: contain;
+  opacity:.06;                /* deixa bem discreto */
+  filter: blur(0.8px);
+  pointer-events:none;
+  z-index:-1;
+}
+
+@media (max-width: 768px){
+  .hero::before{
+    width: 80vw;
+    opacity:.04;
+    background-position: -10% top;
+  }
+}
+
+/* Hero pronta pra receber fundo */
+.hero{ position: relative; }
+.hero > *{ position: relative; z-index: 1; } /* conteúdo fica acima do fundo */
+
+/* Circuito como fundo na parte de cima (direita) */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;                 /* cobre a seção toda */
+  z-index:0;               /* atrás do conteúdo */
+  pointer-events:none;
+  background: url("src/ELEMENTOS_transparente.png") no-repeat right -6% center;
+  /* escala pela ALTURA pra ficar grande no topo */
+  background-size: auto 95%;
+  opacity:.06;             /* discreto */
+  filter: blur(.6px);
+}
+
+/* telas muito largas → pode crescer um pouco */
+@media (min-width: 1440px){
+  .hero::after{
+    background-position: right -4% center;
+    background-size: auto 105%;
+  }
+}
+
+/* tablet/celular: reduz e joga um pouco mais pra fora */
+@media (max-width: 1024px){
+  .hero::after{
+    background-position: right -10% center;
+    background-size: auto 80%;
+    opacity:.05;
+  }
+}
+@media (max-width: 640px){
+  .hero::after{
+    background-position: right -16% center;
+    background-size: auto 68%;
+    opacity:.045;
+  }
+}
+
+/* Hero pronta pra receber fundo */
+.hero{ position: relative; }
+.hero > *{ position: relative; z-index: 1; } /* conteúdo acima do fundo */
+
+/* Circuito como fundo na parte de cima (direita) */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;                 /* cobre a seção toda */
+  z-index:0;               /* atrás do conteúdo */
+  pointer-events:none;
+  background: url("src/ELEMENTOS_transparente.png") no-repeat right -6% center;
+  /* escala pela ALTURA pra ficar grande no topo */
+  background-size: auto 95%;
+  opacity:.06;             /* discreto */
+  filter: blur(.6px);
+}
+
+/* telas muito largas → pode crescer um pouco */
+@media (min-width: 1440px){
+  .hero::after{
+    background-position: right -4% center;
+    background-size: auto 105%;
+  }
+}
+
+/* tablet/celular: reduz e joga um pouco mais pra fora */
+@media (max-width: 1024px){
+  .hero::after{
+    background-position: right -10% center;
+    background-size: auto 80%;
+    opacity:.05;
+  }
+}
+@media (max-width: 640px){
+  .hero::after{
+    background-position: right -16% center;
+    background-size: auto 68%;
+    opacity:.045;
+  }
+}
+
+/* Grid de logos das marcas */
+/* GRID das marcas (duas colunas, centralizado) */
+.partners__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 260px));
+  justify-content: center;
+  align-items: center;
+  gap: clamp(28px, 6vw, 64px);
+  margin: 28px auto 8px;
+}
+
+/* Card simples: só centralização e legenda */
+.partner{
+  text-align: center;
+}
+
+/* LOGO sem “bola”: grande, sem fundo, sem borda, com zoom no hover */
+.partner img{
+  width: clamp(160px, 22vw, 200px);    /* maior que antes */
+  height: clamp(160px, 22vw, 200px);
+  object-fit: contain;                 /* mantém proporção do arquivo */
+  display: block;
+  margin: 0 auto;
+  transform: translateZ(0) scale(1);
+  transition: transform .25s ease, filter .25s ease, opacity .25s ease;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.25));  /* leve profundidade */
+  opacity: .95;    /* fica mais “vivo” no hover */
+}
+
+.partner img:hover{
+  transform: translateZ(0) scale(1.12); /* aumenta mais no hover */
+  filter: drop-shadow(0 14px 34px rgba(0,0,0,.35));
+  opacity: 1;
+}
+
+.partner figcaption{
+  margin-top: 12px;
+  opacity: .9;
+  font-weight: 500;
+}
+
+/* Logos grandes no desktop (um pouco menores que antes) */
+.partners .partners__grid .partner > img {
+  width: auto !important;
+  height: auto !important;
+  max-height: 400px !important;   /* ↓ de 460px pra 400px */
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none;
+  transition: transform .25s ease;
+}
+
+.partners .partners__grid .partner > img:hover {
+  transform: scale(1.18);   /* zoom suave no hover */
+}
+
+/* Mobile mantém menorzinho pra caber */
+@media (max-width: 640px) {
+  .partners .partners__grid .partner > img {
+    max-height: 160px !important;
+  }
+}
+
+/* ===== Partners: logos alinhados ===== */
+.partners__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  align-items: center;
+}
+
+.partners__grid .partner > img {
+  width: auto !important;
+  height: auto !important;
+  max-height: 180px !important;   /* todos no mesmo tamanho */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform .25s ease;
+}
+
+.partners__grid .partner > img:hover {
+  transform: scale(1.12);
+}
+
+.partners__grid .partner figcaption {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: .9;
+}
+
+@media (max-width: 640px) {
+  .partners__grid .partner > img {
+    max-height: 140px !important;  /* menor no celular */
+  }
+}
+
+/* ====== OVERRIDES FINAIS: PARCEIROS (força alinhamento e tamanho) ====== */
+
+/* 2 colunas grandes no desktop, centralizado */
+.partners .partners__grid{
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(240px, 1fr)) !important;
+  justify-items: center !important;
+  align-items: start !important;
+  gap: 32px !important;
+  text-align: center !important;
+}
+
+/* todos os logos com MESMA altura (um pouco menor) */
+.partners .partners__grid .partner > img{
+  width: auto !important;
+  height: auto !important;
+  max-height: 220px !important;   /* ← ajuste fino aqui (quer menor/maior) */
+  object-fit: contain !important;
+  transform: none !important;
+  transition: transform .25s ease !important;
+}
+
+/* hover igual pra todos */
+.partners .partners__grid .partner > img:hover{
+  transform: scale(1.12) !important;
+}
+
+/* remove “destaque” do Tiger */
+.partners .partners__grid .partner.partner--big{
+  grid-column: auto !important;
+  gap: 10px !important;
+}
+.partners .partners__grid .partner.partner--big > img{
+  max-height: 220px !important;   /* igual ao outro */
+}
+
+/* mobile: menor pra caber */
+@media (max-width:640px){
+  .partners .partners__grid{
+    grid-template-columns: repeat(2, minmax(140px, 1fr)) !important;
+    gap: 20px !important;
+  }
+  .partners .partners__grid .partner > img{
+    max-height: 140px !important;
+  }
 }
