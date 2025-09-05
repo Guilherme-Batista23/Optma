@@ -137,10 +137,10 @@ body{
 .msg--client{justify-self:flex-start; background:#0f1728;}
 .msg--ai{
   justify-self:flex-end;
-  background: linear-gradient(180deg, #5a75ff, var(--primary));
-  border-color: rgba(81,108,243,.55);
-  color:#fff;
-  box-shadow: 0 8px 20px rgba(81,108,243,.28);
+  background: rgba(81,108,243,.08);
+  border: 1px solid rgba(81,108,243,.18);
+  color: #e9edf7;
+  box-shadow: 0 4px 10px rgba(81,108,243,.12);
 }
 .msg .time{display:block; opacity:.7; font-size:.75rem; margin-top:6px}
 
@@ -170,10 +170,10 @@ body{
 .section-head .muted{color:#b9c1d8}
 
 .features{padding:64px 0}
-.features__grid{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:16px;
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+  gap: 24px; /* pode aumentar um pouco o espaçamento */
 }
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
@@ -1184,8 +1184,8 @@ html, body { width:100%; overflow-x:hidden; }            /* evita rolagem latera
 @media (max-width: 640px){
   .hero::after{
     background-position: right -16% center;
-    background-size: auto 68%;
-    opacity:.045;
+    background-size: auto 90%;
+    opacity:.45;
   }
 }
 
@@ -1226,8 +1226,8 @@ html, body { width:100%; overflow-x:hidden; }            /* evita rolagem latera
 @media (max-width: 640px){
   .hero::after{
     background-position: right -16% center;
-    background-size: auto 68%;
-    opacity:.045;
+    background-size: auto 75%;
+    opacity:.25;
   }
 }
 
@@ -1375,3 +1375,177 @@ html, body { width:100%; overflow-x:hidden; }            /* evita rolagem latera
     max-height: 140px !important;
   }
 }
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(81,108,243,.55);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.features__grid .card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.features__grid .card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(81,108,243,.25);
+  border-color: rgba(81,108,243,.4);
+}
+
+.partners__grid .partner > img {
+  transition: transform .3s ease, filter .3s ease, opacity .3s ease;
+}
+.partners__grid .partner > img:hover {
+  transform: scale(1.15) rotate(-2deg);
+  filter: drop-shadow(0 12px 28px rgba(81,108,243,.35));
+  opacity: 1;
+}
+
+.form input:hover,
+.form textarea:hover {
+  border-color: rgba(81,108,243,.5);
+  box-shadow: 0 0 0 3px rgba(81,108,243,.25);
+  transition: all .25s ease;
+}
+
+a, button, .card {
+  transition: all .25s ease;
+}
+a:hover, button:hover {
+  filter: brightness(1.08);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(90deg, #516cf3, #43b7c9, #5a75ff, #516cf3);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s ease;
+  animation: glowMove 6s linear infinite;
+}
+.btn-primary:hover::before {
+  opacity: 1;
+}
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  backdrop-filter: blur(10px) saturate(150%);
+  background: linear-gradient(135deg, rgba(81,108,243,.12), rgba(255,255,255,.04));
+  transition: all .3s ease;
+}
+.card:hover {
+  background: linear-gradient(135deg, rgba(81,108,243,.25), rgba(255,255,255,.08));
+  transform: translateY(-6px) scale(1.03);
+}
+
+
+/* efeito scanline nos cards */
+.features__grid .card{
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  will-change: transform;
+}
+.features__grid .card::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(81,108,243,.20) 40%,
+    rgba(81,108,243,.60) 50%,
+    rgba(81,108,243,.20) 60%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+}
+.features__grid .card:hover{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(81,108,243,.25);
+  border-color: rgba(81,108,243,.4);
+}
+.features__grid .card:hover::after{
+  animation: scan .8s forwards;
+}
+
+@keyframes scan{
+  to { transform: translateX(100%); }
+}
+
+/* ===== OVERRIDES MOBILE – fundos mais fortes no fim do arquivo ===== */
+
+/* Partners (bloco de baixo acima do form) */
+@media (max-width: 640px){
+  .partners::after{
+    width: 92vw !important;               /* mais largo */
+    background-position: right -6% center !important;
+    background-size: auto 100% !important;/* maior na altura */
+    opacity: .05 !important;              /* + forte (0.10 ~ 0.18) */
+    filter: blur(0.6px) !important;
+  }
+}
+
+/* (Opcional) Dar um fundo também na seção do formulário */
+@media (max-width: 640px){
+  .contact::after{
+    content:"";
+    position:absolute; inset:0;
+    background: url("src/ELEMENTOS.png") no-repeat left 10% center;
+    background-size: auto 30%;
+    opacity: .001;
+    pointer-events:none;
+    z-index:0;
+  }
+  .contact > *{ position: relative; z-index:1; } /* conteúdo acima do fundo */
+}
+/* ===== Partners: animação de crescimento progressivo ===== */
+.partners__grid .partner{
+  transform: scale(.92);
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .3s ease;
+  will-change: transform;
+}
+.partners__grid .partner.p-visible{
+  transform: scale(var(--scale-target, 1));
+}
+
+/* hover ainda dá um destaque suave */
+.partners__grid .partner.p-visible:hover{
+  transform: scale(calc(var(--scale-target, 1) + .04));
+  filter: drop-shadow(0 12px 28px rgba(81,108,243,.25));
+}
+
+/* Mobile: mantém mais contido pra não ficar exagerado */
+@media (max-width:640px){
+  .partners__grid .partner{
+    transform: scale(.96);
+  }
+  .partners__grid .partner.p-visible{
+    transform: scale(1.02);               /* alvo fixo no mobile */
+  }
+  .partners__grid .partner.p-visible:hover{
+    transform: scale(1.06);
+  }
+}
+
+/* Partners com movimento no scroll */
+.partners__grid .partner {
+  transition: transform .2s ease-out;
+  will-change: transform;
+}
+

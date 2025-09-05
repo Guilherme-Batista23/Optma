@@ -268,3 +268,38 @@ document.addEventListener("DOMContentLoaded", () => {
   [btnPrev, btnNext].forEach(b => b && b.addEventListener('focus', pause));
   [btnPrev, btnNext].forEach(b => b && b.addEventListener('blur', resume));
 })();
+
+const dot = document.createElement("div");
+const outline = document.createElement("div");
+dot.className = "cursor-dot";
+outline.className = "cursor-outline";
+document.body.append(dot, outline);
+
+document.addEventListener("mousemove", e => {
+  dot.style.left = outline.style.left = e.clientX + "px";
+  dot.style.top = outline.style.top = e.clientY + "px";
+});
+
+// ===== Partners: crescimento progressivo conforme aparece =====
+(function(){
+  const logos = document.querySelectorAll('.partners__grid .partner');
+  if(!logos.length) return;
+
+  // define um alvo de escala por ordem (cap em +22%)
+  logos.forEach((el, i) => {
+    const target = 1 + Math.min(0.22, i * 0.04);
+    el.style.setProperty('--scale-target', target.toFixed(2));
+  });
+
+  // revela com animação quando entra na viewport
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('p-visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: .2 });
+
+  logos.forEach(el => io.observe(el));
+})();
